@@ -1,11 +1,14 @@
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import { Button } from "./components/ui/button";
+import Home from "./components/Pages/Home";
 
 function App() {
   return (
-    <div>
-      <Button>Click me</Button>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </>
   );
 }
 
