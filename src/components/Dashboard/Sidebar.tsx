@@ -22,7 +22,7 @@ export const tabs = [
 const Sidebar = ({ active }: Props) => {
   return (
     <>
-      <div className="lg:block md:block hidden sticky top-0 hero-bg border-r border-gray-700 h-[100dvh] lg:pe-3">
+      <div className="lg:block md:block hidden sticky top-0 secondary-bg border-r border-gray-700 h-[100dvh] lg:pe-3">
         <Link to="/">
           <h1 className="text-white lg:text-4xl md:text-2xl md:pt-4 md:text-center lg:text-start lg:ms-3 logo-font ">
             vibecard

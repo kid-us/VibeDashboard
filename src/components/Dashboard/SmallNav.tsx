@@ -11,7 +11,7 @@ const SmallNavbar = ({ active }: Props) => {
 
   return (
     <>
-      <div className="lg:hidden md:hidden hero-bg z-10 flex justify-between sticky top-0 shadow-lg p-4 hero-bg">
+      <div className="lg:hidden md:hidden hero-bg z-10 flex justify-between sticky top-0 shadow-lg p-4 secondary-bg">
         <p
           onClick={() => setMenu(!menu)}
           className={`${menu ? "bi-x" : "bi-list"} text-white text-3xl`}
@@ -22,7 +22,7 @@ const SmallNavbar = ({ active }: Props) => {
       </div>
 
       {menu && (
-        <div className="fixed bg-main w-full z-50 h-[100dvh]">
+        <div className="fixed bg-main w-full z-50 h-[100dvh] secondary-bg">
           <div className="mt-10 md:text-center lg:text-start lg:ms-3 text-white px-5">
             {tabs.map((tab) => (
               <Link
