@@ -7,7 +7,12 @@ interface Props {
 
 export const tabs = [
   { id: 1, icon: "bi-speedometer", title: "Dashboard", path: "/" },
-  //   { id: 2, icon: "bi-person-fill", title: "Lectures", path: "/lectures" },
+  {
+    id: 2,
+    icon: "bi-person-heart",
+    title: "Ambassadors",
+    path: "/ambassadors",
+  },
   //   { id: 3, icon: "bi-tags-fill", title: "Categories", path: "/category" },
   //   { id: 4, icon: "bi-book-fill", title: "Courses", path: "/courses" },
   //   { id: 5, icon: "bi-people-fill", title: "Students", path: "/students" },
@@ -30,7 +35,7 @@ const Sidebar = ({ active }: Props) => {
               to={tab.path}
               className={`${
                 active === tab.title
-                  ? "lg:bg-teal-300 rounded lg:text-black md:text-teal-400"
+                  ? "lg:bg-teal-600 rounded lg:text-black md:text-teal-400"
                   : "text-white"
               } block mb-5 lg:text-xl md:text-3xl p-2`}
             >
