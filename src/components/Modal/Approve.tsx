@@ -33,7 +33,7 @@ const Approve = ({ onApprove, url, name }: Props) => {
   return (
     <>
       <div className="overlay w-full z-50"></div>
-      <div className="fixed w-full z-50">
+      <div className="fixed w-full z-50 top-0 left-0">
         <div className="flex justify-center items-center h-[100vh]">
           <div className="p-8 secondary-bg rounded lg:w-[30%] lg:mx-0 mx-3">
             {!approved ? (
