@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { tabs } from "./Sidebar";
 import { Link } from "react-router-dom";
+import Setting from "../Modal/Setting";
 
 interface Props {
   active: string;
@@ -8,6 +9,7 @@ interface Props {
 
 const SmallNavbar = ({ active }: Props) => {
   const [menu, setMenu] = useState(false);
+  const [setting, setSetting] = useState<boolean>(false);
 
   return (
     <>
@@ -19,6 +21,20 @@ const SmallNavbar = ({ active }: Props) => {
         <Link to="/">
           <p className="text-white text-2xl logo-font">vibecard</p>
         </Link>
+
+        <div className="text-white flex gap-x-10 ">
+          <div className="relative">
+            <p className="cursor-pointer bi-bell-fill text-xl"></p>
+            <p className="absolute -top-2 left-3 bg-red-500 rounded-full w-5 h-5 text-center">
+              <span className="absolute -top-[3px] left-[5px]">0</span>
+            </p>
+          </div>
+          <p
+            onClick={() => setSetting(true)}
+            className="cursor-pointer bi-person-circle text-xl"
+          ></p>
+          <p className="bi-box-arrow-right text-xl"></p>
+        </div>
       </div>
 
       {menu && (
@@ -38,16 +54,11 @@ const SmallNavbar = ({ active }: Props) => {
                 {tab.title}
               </Link>
             ))}
-            {/* Logout */}
-            {/* <button className={`text-white p-2 text-xl`}>
-              <span
-                className={`text-2xl  bi-arrow-bar-right lg:me-5 text-center me-5`}
-              ></span>
-              Logout
-            </button> */}
           </div>
         </div>
       )}
+
+      {setting && <Setting onClose={() => setSetting(false)} />}
     </>
   );
 };

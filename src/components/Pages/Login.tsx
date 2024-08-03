@@ -145,7 +145,6 @@ const Login = () => {
                 {/* Button */}
                 <Button loader={loader} label="Login" />
               </form>
-
               <div className="relative lg:block hidden lg:-top-64 left-[30em] -top-40">
                 <div className="absolute lg:right-[15em] w-full right-36 top-40 bulb"></div>
               </div>

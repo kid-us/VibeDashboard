@@ -1,15 +1,37 @@
+import { useState } from "react";
+import Setting from "../Modal/Setting";
+
 const Nav = () => {
+  const [setting, setSetting] = useState<boolean>(false);
+
   return (
-    <div className="lg:flex md:flex hidden justify-between border-b border-gray-700 pb-5 ">
-      <div className="relative">
-        <div className="mt-2 text-white">
-          <p className="text-xl font-bold">Welcome back Admin </p>
-          <p className="text-gray-400 mt-2">
-            Manage your customers, ambassadors and website
-          </p>
+    <>
+      <div className="lg:flex md:flex hidden justify-between border-b border-gray-700 pb-5 ">
+        <div className="relative">
+          <div className="mt-2 text-white">
+            <p className="text-xl font-bold">Welcome back Admin </p>
+            <p className="text-gray-400 mt-2">
+              Manage your customers, ambassadors and website
+            </p>
+          </div>
+        </div>
+        <div className="text-white flex gap-x-10 me-5">
+          <div className="relative">
+            <p className="cursor-pointer bi-bell-fill text-2xl"></p>
+            <p className="absolute -top-2 left-3 bg-red-500 rounded-full w-5 h-5 text-center">
+              <span className="absolute -top-[3px] left-[5px]">0</span>
+            </p>
+          </div>
+          <p
+            onClick={() => setSetting(true)}
+            className="cursor-pointer bi-person-circle text-2xl"
+          ></p>
+          <p className="bi-box-arrow-right text-2xl"></p>
         </div>
       </div>
-    </div>
+
+      {setting && <Setting onClose={() => setSetting(false)} />}
+    </>
   );
 };
 

@@ -3,8 +3,12 @@ import Nav from "../Dashboard/Nav";
 import Sidebar from "../Dashboard/Sidebar";
 import PendingAmbassadors from "../Ambassadors/PendingAmbassadors";
 import ApprovedAmbassadors from "../Ambassadors/ApprovedAmbassadors";
+import { useState } from "react";
+import useDocumentTitle from "@/hook/useDocumentTitle";
 
 const Ambassadors = () => {
+  const [title] = useState("Ambassadors");
+  useDocumentTitle(title);
   return (
     <>
       <div className="relative lg:grid md:grid grid-cols-11">
