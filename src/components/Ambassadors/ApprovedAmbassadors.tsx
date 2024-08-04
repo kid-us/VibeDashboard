@@ -19,84 +19,104 @@ const ApprovedAmbassadors = () => {
 
       {/* Table */}
       <div className="lg:grid md:grid hidden lg:grid-cols-12 md:grid-cols-12 grid-cols-1 gap-x-5 bg-gray-950 p-2 text-white mb-2 mt-1">
-        <div className="col-span-2">
+        <div className="col-span-1">
           <p className="text-[14px] logo">First Name</p>
         </div>
-        <div className="col-span-2">
+        <div className="col-span-1">
           <p className="text-[14px]">Last Name</p>
         </div>
-        <div className="col-span-2">
+        <div className="col-span-1">
           <p className="text-[14px]">Email</p>
         </div>
-        <div className="col-span-2">
-          <p className="text-sm text-white"> Earning</p>
+        <div className="col-span-1">
+          <p className="text-md bi-linkedin text-blue-500"></p>
         </div>
         <div className="col-span-1">
-          <p className="text-sm bi-instagram text-red-500"> Insta</p>
+          <p className="text-md bi-instagram text-red-500"></p>
         </div>
         <div className="col-span-1">
-          <p className="text-sm bi-youtube text-red-500"> YouTube</p>
-        </div>
-
-        <div className="col-span-1">
-          <p className="text-sm bi-twitter text-cyan-500"> Twitter</p>
+          <p className="text-md bi-youtube text-red-500"></p>
         </div>
         <div className="col-span-1">
-          <p className="text-sm bi-tiktok text-white"> Tik Tok</p>
+          <p className="text-md bi-facebook text-blue-500"></p>
+        </div>
+        <div className="col-span-1">
+          <p className="text-md bi-twitch text-purple-500"></p>
+        </div>
+        <div className="col-span-1">
+          <p className="text-md bi-twitter text-cyan-500"></p>
+        </div>
+        <div className="col-span-1">
+          <p className="text-md bi-tiktok text-white"></p>
+        </div>
+        <div className="col-span-1">
+          <p className="text-md bi-globe text-blue-900"></p>
+        </div>
+        <div className="col-span-1">
+          <p className="text-sm">Earning</p>
         </div>
       </div>
 
-      {/* Course */}
+      {/* Pending */}
       {activeAmbassadors.length === 0 ? (
         <p className="w-full bg-white text-center py-3 text-sm">
-          List of approved ambassadors
+          List of requested ambassadors
         </p>
       ) : (
-        activeAmbassadors.map((approved) => (
+        activeAmbassadors.map((active) => (
           <div
-            key={approved.uid}
+            key={active.uid}
             className="grid lg:grid-cols-12 md:grid-cols-12 grid-cols-4 gap-x-5 lg:gap-y-0 md:gap-y-0 gap-y-5 hero-bg text-white lg:px-2 md:px-2 p-4 mt-1 rounded hover:border-l-4 border-blue-500 bg-gray-800 mb-2"
           >
             {/* First Name */}
-            <div className="col-span-2">
+            <div className="col-span-1 lg:col-span-1 md:col-span-1">
               <p className="lg:hidden md:hidden text-xs mb-3 text-gray-400">
                 First Name
               </p>
               <p className="text-sm text-ellipsis overflow-hidden text-nowrap">
-                {approved.first_name}
+                {active.first_name}
               </p>
             </div>
             {/* Last Name */}
-            <div className="col-span-2">
+            <div className="col-span-1">
               <p className="lg:hidden md:hidden text-xs mb-3 text-gray-400">
                 Last Name
               </p>
               <p className="text-sm text-ellipsis overflow-hidden text-nowrap">
-                {approved.last_name}
+                {active.last_name}
               </p>
             </div>
             {/* Email */}
-            <div className="col-span-2">
+            <div className="col-span-1">
               <p className="lg:hidden md:hidden text-xs mb-3 text-gray-400">
                 Email
               </p>
               <p className="text-sm text-ellipsis overflow-hidden text-nowrap">
-                <a
-                  href={`mailto:${approved.email}`}
-                  className="text-sm text-blue-300"
-                >
-                  {approved.email}
-                </a>
+                {active.email !== "" ? (
+                  <a
+                    href={`mailto:${active.email}`}
+                    className="bi-envelope bi-box-arrow-in-up-right text-xl text-blue-300"
+                  ></a>
+                ) : (
+                  "-"
+                )}
               </p>
             </div>
-            {/* Earning */}
-            <div className="col-span-2">
-              <p className="lg:hidden md:hidden text-xs mb-3 text-gray-400">
-                Earning
+            {/* linkedin */}
+            <div className="col-span-1">
+              <p className="lg:hidden md:hidden text-xs mb-3 bi-linkedin text-gray-400">
+                <span className="ms-1"></span>
+                LinkedIn
               </p>
-              <p className="text-sm text-ellipsis overflow-hidden text-nowrap">
-                {approved.earnings}
-              </p>
+              {active.linkedin !== "" ? (
+                <a
+                  href={active.linkedin}
+                  target="_blank"
+                  className="bi-box-arrow-in-up-right text-xl text-blue-300"
+                ></a>
+              ) : (
+                "-"
+              )}
             </div>
             {/* instagram */}
             <div className="col-span-1">
@@ -104,9 +124,9 @@ const ApprovedAmbassadors = () => {
                 <span className="ms-1"></span>
                 Instagram
               </p>
-              {approved.instagram !== "" ? (
+              {active.instagram !== "" ? (
                 <a
-                  href={approved.instagram}
+                  href={active.instagram}
                   target="_blank"
                   className="bi-box-arrow-in-up-right text-xl text-red-500"
                 ></a>
@@ -121,11 +141,43 @@ const ApprovedAmbassadors = () => {
                 YouTube
               </p>
 
-              {approved.youtube !== "" ? (
+              {active.youtube !== "" ? (
                 <a
-                  href={approved.youtube}
+                  href={active.youtube}
                   target="_blank"
                   className="bi-box-arrow-in-up-right text-xl text-red-300"
+                ></a>
+              ) : (
+                "-"
+              )}
+            </div>
+            {/* facebook */}
+            <div className="col-span-1">
+              <p className="lg:hidden md:hidden text-xs mb-3 text-gray-400 bi-facebook">
+                <span className="ms-1"></span>
+                Facebook
+              </p>
+              {active.facebook ? (
+                <a
+                  href={active.facebook}
+                  target="_blank"
+                  className="bi-box-arrow-in-up-right text-xl text-blue-300"
+                ></a>
+              ) : (
+                "-"
+              )}
+            </div>
+            {/* twitch */}
+            <div className="lg:col-span-1 md:col-span-1 col-span-1">
+              <p className="lg:hidden md:hidden text-xs mb-3 text-gray-400 bi-twitch">
+                <span className="ms-1"></span>
+                Twitch
+              </p>
+              {active.twich ? (
+                <a
+                  href={active.twich}
+                  target="_blank"
+                  className="text-purple-300 bi-box-arrow-in-up-right text-xl"
                 ></a>
               ) : (
                 "-"
@@ -137,9 +189,9 @@ const ApprovedAmbassadors = () => {
                 <span className="ms-1"></span>
                 Twitter
               </p>
-              {approved.twitter ? (
+              {active.twitter ? (
                 <a
-                  href={approved.twitter}
+                  href={active.twitter}
                   target="_blank"
                   className="text-cyan-600 bi-box-arrow-in-up-right text-xl"
                 ></a>
@@ -153,15 +205,39 @@ const ApprovedAmbassadors = () => {
                 <span className="ms-1"></span>
                 Tik tok
               </p>
-              {approved.tiktoc ? (
+              {active.tiktoc ? (
                 <a
-                  href={approved.tiktoc}
+                  href={active.tiktoc}
                   target="_blank"
                   className="bi-box-arrow-in-up-right text-xl text-white"
                 ></a>
               ) : (
                 "-"
               )}
+            </div>
+            {/* website */}
+            <div className="lg:col-span-1 md:col-span-1 col-span-1">
+              <p className="lg:hidden md:hidden text-xs mb-3 text-gray-400 bi-globe">
+                <span className="ms-1"></span>
+                Website
+              </p>
+              {active.website ? (
+                <a
+                  href={active.website}
+                  target="_blank"
+                  className="bi-box-arrow-in-up-right text-xl text-blue-300"
+                ></a>
+              ) : (
+                "-"
+              )}
+            </div>
+            <div>
+              <p className="lg:hidden md:hidden text-xs mb-3 text-gray-400">
+                Earning
+              </p>
+              <p className="text-sm text-ellipsis overflow-hidden text-nowrap">
+                {active.earnings}
+              </p>
             </div>
           </div>
         ))
