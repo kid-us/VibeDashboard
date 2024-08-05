@@ -73,96 +73,105 @@ const Materials = () => {
       <p className="text-gray-400 font-bold mb-5">Cards</p>
 
       <div className="grid grid-cols-3 text-white">
-        <p className="text-gray-400 text-sm font-bold mb-3">Type</p>
-        <p className="text-gray-400 text-sm font-bold mb-3">Price</p>
-        <p className="text-gray-400 text-sm font-bold mb-3">Edit</p>
+        <p className="text-gray-400 text-sm mb-3">Type</p>
+        <p className="text-gray-400 text-sm mb-3">Price</p>
+        <p className="text-gray-400 text-sm mb-3">Edit</p>
+
         {/* Metal */}
-        <p className="mb-3">Metal</p>
-        <p className="mb-3">€{cards?.metal.price}</p>
+        <div className="col-span-3 grid grid-cols-3 secondary-bg mb-2 py-3 px-3 rounded">
+          <p className="">Metal</p>
+          <p className="">€{cards?.metal.price}</p>
 
-        <div className="flex gap-x-3">
-          {editBtn === "metal" ? (
-            <>
-              <input
-                type="number"
-                className="ps-3 text-black font-bold focus:outline-none rounded w-28 h-8"
-                onChange={(e) => setMetal(e.currentTarget.value)}
-                value={metal}
-              />
-              <button
-                onClick={() => handleChange()}
-                className="bi-check bg-green-500 h-8 rounded px-2 text-xl"
-              ></button>
+          <div className="flex gap-x-3">
+            {editBtn === "metal" ? (
+              <>
+                <input
+                  type="number"
+                  className="ps-3 text-black font-bold focus:outline-none rounded w-28 h-8"
+                  onChange={(e) => setMetal(e.currentTarget.value)}
+                  value={metal}
+                />
+                <button
+                  onClick={() => handleChange()}
+                  className="bi-check bg-green-500 h-8 rounded px-2 text-xl"
+                ></button>
 
+                <button
+                  onClick={() => setEditBtn("")}
+                  className="bi-x-lg text-red-400"
+                ></button>
+              </>
+            ) : (
               <button
-                onClick={() => setEditBtn("")}
-                className="bi-x-lg text-red-400"
+                onClick={() => setEditBtn("metal")}
+                className="bi-pen-fill text-blue-500"
               ></button>
-            </>
-          ) : (
-            <button
-              onClick={() => setEditBtn("metal")}
-              className="bi-pen-fill text-blue-500"
-            ></button>
-          )}
+            )}
+          </div>
         </div>
+
         {/* Bamboo */}
-        <p className="mb-3">Bamboo</p>
-        <p className="mb-3">€{cards?.bamboo.price}</p>
-        <div className="flex gap-x-3">
-          {editBtn === "bamboo" ? (
-            <>
-              <input
-                type="number"
-                className="ps-3 text-black font-bold focus:outline-none rounded w-28 h-8"
-                onChange={(e) => setBamboo(e.currentTarget.value)}
-                value={bamboo}
-              />
-              <button
-                onClick={() => handleChange()}
-                className="bi-check bg-green-500 h-8 rounded px-2 text-xl"
-              ></button>
+        <div className="col-span-3 grid grid-cols-3 secondary-bg mb-2 py-3 px-3 rounded">
+          <p className="">Bamboo</p>
+          <p className="">€{cards?.bamboo.price}</p>
+          <div className="flex gap-x-3">
+            {editBtn === "bamboo" ? (
+              <>
+                <input
+                  type="number"
+                  className="ps-3 text-black font-bold focus:outline-none rounded w-28 h-8"
+                  onChange={(e) => setBamboo(e.currentTarget.value)}
+                  value={bamboo}
+                />
+                <button
+                  onClick={() => handleChange()}
+                  className="bi-check bg-green-500 h-8 rounded px-2 text-xl"
+                ></button>
 
+                <button
+                  onClick={() => setEditBtn("")}
+                  className="bi-x-lg text-red-400"
+                ></button>
+              </>
+            ) : (
               <button
-                onClick={() => setEditBtn("")}
-                className="bi-x-lg text-red-400"
+                onClick={() => setEditBtn("bamboo")}
+                className="bi-pen-fill text-blue-500"
               ></button>
-            </>
-          ) : (
-            <button
-              onClick={() => setEditBtn("bamboo")}
-              className="bi-pen-fill text-blue-500"
-            ></button>
-          )}
+            )}
+          </div>
         </div>
-        {/* Recycled */}
-        <p className="mb-1">Recycled Paper</p>
-        <p className="mb-1">€{cards?.recycled_paper.price}</p>
-        <div className="flex gap-x-3">
-          {editBtn === "recycled_paper" ? (
-            <>
-              <input
-                type="number"
-                className="ps-3 text-black font-bold focus:outline-none rounded w-28 h-9"
-                onChange={(e) => setPaper(e.currentTarget.value)}
-                value={paper}
-              />
-              <button
-                onClick={() => handleChange()}
-                className="bi-check bg-green-500 h-8 rounded px-2 text-xl"
-              ></button>
 
+        {/* Recycled */}
+        <div className="col-span-3 grid grid-cols-3 secondary-bg mb-2 py-3 px-3 rounded">
+          <p className="mb-1">Recycled Paper</p>
+          <p className="mb-1">€{cards?.recycled_paper.price}</p>
+          <div className="flex gap-x-3">
+            {editBtn === "recycled_paper" ? (
+              <>
+                <input
+                  type="number"
+                  className="ps-3 text-black font-bold focus:outline-none rounded w-28 h-9"
+                  onChange={(e) => setPaper(e.currentTarget.value)}
+                  value={paper}
+                />
+                <button
+                  onClick={() => handleChange()}
+                  className="bi-check bg-green-500 h-8 rounded px-2 text-xl"
+                ></button>
+
+                <button
+                  onClick={() => setEditBtn("")}
+                  className="bi-x-lg text-red-400"
+                ></button>
+              </>
+            ) : (
               <button
-                onClick={() => setEditBtn("")}
-                className="bi-x-lg text-red-400"
+                onClick={() => setEditBtn("recycled_paper")}
+                className="bi-pen-fill text-blue-500"
               ></button>
-            </>
-          ) : (
-            <button
-              onClick={() => setEditBtn("recycled_paper")}
-              className="bi-pen-fill text-blue-500"
-            ></button>
-          )}
+            )}
+          </div>
         </div>
       </div>
     </div>

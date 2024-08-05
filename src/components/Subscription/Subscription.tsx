@@ -61,68 +61,73 @@ const Subscription = () => {
         <p className="text-gray-400 font-bold mb-5">Subscription Plans</p>
 
         <div className="grid grid-cols-3 text-white">
-          <p className="text-gray-400 text-sm font-bold mb-3 w-full">Plan</p>
-          <p className="text-gray-400 text-sm font-bold mb-3 w-full">Price</p>
-          <p className="text-gray-400 text-sm font-bold mb-3 w-full">Edit</p>
-          {/* Metal */}
-          <p className="mb-3">Pro</p>
-          <p className="mb-3">€{subscription?.pro.price}</p>
+          <p className="text-gray-400 text-sm mb-3 w-full">Plan</p>
+          <p className="text-gray-400 text-sm mb-3 w-full">Price</p>
+          <p className="text-gray-400 text-sm mb-3 w-full">Edit</p>
 
-          <div className="flex gap-x-3">
-            {editBtn === "pro" ? (
-              <>
-                <input
-                  type="number"
-                  className="ps-3 text-black font-bold focus:outline-none rounded w-28 h-8"
-                  onChange={(e) => setPro(e.currentTarget.value)}
-                  value={pro}
-                />
-                <button
-                  onClick={() => handleChange()}
-                  className="bi-check bg-green-500 h-8 rounded px-2 text-xl"
-                ></button>
+          {/* Pro */}
+          <div className="col-span-3 grid grid-cols-3 secondary-bg mb-2 py-3 px-3 rounded">
+            <p className="">Pro</p>
+            <p className="">€{subscription?.pro.price}</p>
 
+            <div className="flex gap-x-3">
+              {editBtn === "pro" ? (
+                <>
+                  <input
+                    type="number"
+                    className="ps-3 text-black font-bold focus:outline-none rounded w-28 h-8"
+                    onChange={(e) => setPro(e.currentTarget.value)}
+                    value={pro}
+                  />
+                  <button
+                    onClick={() => handleChange()}
+                    className="bi-check bg-green-500 h-8 rounded px-2 text-xl"
+                  ></button>
+
+                  <button
+                    onClick={() => setEditBtn("")}
+                    className="bi-x-lg text-red-400"
+                  ></button>
+                </>
+              ) : (
                 <button
-                  onClick={() => setEditBtn("")}
-                  className="bi-x-lg text-red-400"
+                  onClick={() => setEditBtn("pro")}
+                  className="bi-pen-fill text-blue-500"
                 ></button>
-              </>
-            ) : (
-              <button
-                onClick={() => setEditBtn("pro")}
-                className="bi-pen-fill text-blue-500"
-              ></button>
-            )}
+              )}
+            </div>
           </div>
 
-          {/* Bamboo */}
-          <p className="mb-3">Pro +</p>
-          <p className="mb-3">€{subscription?.proPlus.price}</p>
-          <div className="flex gap-x-3">
-            {editBtn === "pro+" ? (
-              <>
-                <input
-                  type="number"
-                  className="ps-3 text-black font-bold focus:outline-none rounded w-28 h-8"
-                  onChange={(e) => setProPlus(e.currentTarget.value)}
-                  value={proPlus}
-                />
-                <button
-                  onClick={() => handleChange()}
-                  className="bi-check bg-green-500 h-8 rounded px-2 text-xl"
-                ></button>
+          {/* Pro + */}
+          <div className="col-span-3 grid grid-cols-3 secondary-bg mb-2 py-3 px-3 rounded">
+            <p className="">Pro +</p>
+            <p className="">€{subscription?.proPlus.price}</p>
+            <div className="flex gap-x-3">
+              {editBtn === "pro+" ? (
+                <>
+                  <input
+                    type="number"
+                    className="ps-3 text-black font-bold focus:outline-none rounded w-28 h-8"
+                    onChange={(e) => setProPlus(e.currentTarget.value)}
+                    value={proPlus}
+                  />
+                  <button
+                    onClick={() => handleChange()}
+                    className="bi-check bg-green-500 h-8 rounded px-2 text-xl"
+                  ></button>
 
+                  <button
+                    onClick={() => setEditBtn("")}
+                    className="bi-x-lg text-red-400"
+                  ></button>
+                </>
+              ) : (
                 <button
-                  onClick={() => setEditBtn("")}
-                  className="bi-x-lg text-red-400"
+                  onClick={() => setEditBtn("pro+")}
+                  className="bi-pen-fill text-blue-500"
                 ></button>
-              </>
-            ) : (
-              <button
-                onClick={() => setEditBtn("pro+")}
-                className="bi-pen-fill text-blue-500"
-              ></button>
-            )}
+              )}
+            </div>
           </div>
         </div>
       </div>
