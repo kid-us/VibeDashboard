@@ -69,7 +69,7 @@ const Materials = () => {
   };
 
   return (
-    <div className="bg2 rounded p-4 mt-4">
+    <div className="bg2 rounded p-4">
       <p className="text-gray-400 font-bold mb-5">Cards</p>
 
       <div className="grid grid-cols-3 text-white">
