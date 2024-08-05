@@ -20,7 +20,7 @@ const Ambassadors = () => {
           <Sidebar active="Ambassadors" />
           {/* </div> */}
         </div>
-        <div className="lg:col-span-9 lg:p-5 md:p-5 px-1 py-2 md:px-6 md:col-span-10">
+        <div className="lg:col-span-9 lg:px-2 md:px-2 px-2 py-3 md:col-span-10">
           {/* Nav */}
           <Nav />
 

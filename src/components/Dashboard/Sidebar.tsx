@@ -13,7 +13,12 @@ export const tabs = [
     title: "Ambassadors",
     path: "/ambassadors",
   },
-  { id: 3, icon: "bi-tags-fill", title: "Categories", path: "/category" },
+  {
+    id: 3,
+    icon: "bi-input-cursor-text",
+    title: "Forms",
+    path: "/forms",
+  },
   //   { id: 4, icon: "bi-book-fill", title: "Courses", path: "/courses" },
   //   { id: 5, icon: "bi-people-fill", title: "Students", path: "/students" },
   //   { id: 6, icon: "bi-gear-fill", title: "Setting", path: "/setting" },
