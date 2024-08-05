@@ -24,8 +24,9 @@ const Sidebar = ({ active }: Props) => {
     <>
       <div className="lg:block md:block hidden sticky top-0 secondary-bg border-r border-gray-700 h-[100dvh] lg:pe-3 pt-3">
         <Link to="/">
-          <h1 className="text-white lg:text-4xl md:text-2xl md:pt-4 md:text-center lg:text-start lg:ms-3 logo-font ">
-            vibecard
+          <h1 className="text-white lg:text-4xl md:text-2xl md:text-center lg:text-start lg:ms-3 logo-font ">
+            <span className="md:hidden logo-font">vibecard</span>
+            <span className="lg:hidden md:block hidden text-5xl">v</span>
           </h1>
         </Link>
         <div className="mt-10 md:text-center lg:text-start lg:ms-3">
