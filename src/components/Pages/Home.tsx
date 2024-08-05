@@ -7,6 +7,7 @@ import axios from "axios";
 import { baseUrl } from "@/services/request";
 import PieCharts from "../Charts/PieChart";
 import Subscription from "../Subscription/Subscription";
+import Materials from "../Materials/Materials";
 
 interface Subscription {
   free: number;
@@ -101,7 +102,7 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 mt-7 gap-x-10">
+          <div className="grid grid-cols-2 mt-7 gap-x-5">
             <PieCharts
               free={general ? general.subscription_info.free : 0}
               pro={general ? general.subscription_info.pro : 0}
@@ -132,9 +133,11 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Subscription */}
-          <div className="grid grid-cols-2">
+          <div className="grid grid-cols-2 mt-7 gap-x-5">
+            {/* Subscription */}
             <Subscription />
+            {/* Materials */}
+            <Materials />
           </div>
         </div>
       </div>
