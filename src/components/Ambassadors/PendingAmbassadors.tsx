@@ -2,9 +2,10 @@ import useAmbassadors from "@/hook/useAmbassadors";
 import { useState } from "react";
 import Approve from "../Modal/Approve";
 import Delete from "../Modal/Delete";
+import Loading from "../Loading/Loading";
 
 const PendingAmbassadors = () => {
-  const { pendingAmbassadors } = useAmbassadors();
+  const { pendingAmbassadors, loading } = useAmbassadors();
 
   const [option, setOption] = useState<boolean>(false);
   const [decline, setDecline] = useState<boolean>(false);
@@ -14,6 +15,7 @@ const PendingAmbassadors = () => {
 
   return (
     <>
+      {loading && <Loading />}
       {/* Decline Modal */}
       {decline && (
         <Delete

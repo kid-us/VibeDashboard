@@ -13,21 +13,39 @@ const Delete = ({ onDelete, name, url }: Props) => {
 
   //   Deleting
   const handleDelete = () => {
-    axios
-      .post(`${baseUrl}${url}`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-      .then(() => {
-        setDeleteConfirmed(true);
-        setTimeout(() => {
-          window.location.reload();
-        }, 3000);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if ((name = "Admin")) {
+      axios
+        .delete(`${baseUrl}${url}`, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then(() => {
+          setDeleteConfirmed(true);
+          setTimeout(() => {
+            window.location.reload();
+          }, 3000);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      axios
+        .post(`${baseUrl}${url}`, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then(() => {
+          setDeleteConfirmed(true);
+          setTimeout(() => {
+            window.location.reload();
+          }, 3000);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
 
   return (
@@ -38,7 +56,7 @@ const Delete = ({ onDelete, name, url }: Props) => {
           <div className="py-6 px-8 secondary-bg rounded lg:w-[30%] lg:mx-0 mx-3">
             {!deleteConfirmed ? (
               <>
-                <h1 className="text-white text-xl ">Decline {name}</h1>
+                <h1 className="text-white text-xl ">Delete {name}</h1>
                 <p className="text-sm  text-gray-400 my-5">
                   Are you sure you want to decline the request of the
                   ambassador? This action cannot be undone. Do you want to
@@ -66,7 +84,7 @@ const Delete = ({ onDelete, name, url }: Props) => {
               <div className="text-center mt-4">
                 <p className="bi-check-circle-fill text-green-500 text-4xl"></p>
                 <p className="text-white mt-5 text-xl chakra first-letter:uppercase">
-                  {name} Declined Successfully!
+                  {name} Delete Successfully!
                 </p>
               </div>
             )}

@@ -9,6 +9,7 @@ import useDocumentTitle from "@/hook/useDocumentTitle";
 const Ambassadors = () => {
   const [title] = useState("Ambassadors");
   useDocumentTitle(title);
+
   return (
     <>
       <div className="relative lg:grid md:grid grid-cols-11">

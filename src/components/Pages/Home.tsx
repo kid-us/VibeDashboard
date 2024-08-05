@@ -8,6 +8,8 @@ import { baseUrl } from "@/services/request";
 import PieCharts from "../Charts/PieChart";
 import Subscription from "../Subscription/Subscription";
 import Materials from "../Materials/Materials";
+import useDocumentTitle from "@/hook/useDocumentTitle";
+import Loading from "../Loading/Loading";
 
 interface Subscription {
   free: number;
@@ -25,7 +27,11 @@ interface General {
 }
 
 const Home = () => {
+  const [title] = useState("Vibecard - Dashboard");
+  useDocumentTitle(title);
+
   const [general, setGeneral] = useState<General>();
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     axios
@@ -36,6 +42,7 @@ const Home = () => {
       })
       .then((response) => {
         setGeneral(response.data);
+        setLoading(false);
       })
       .catch((error) => {
         console.log(error);
@@ -45,6 +52,7 @@ const Home = () => {
   const { activeAmbassadors, pendingAmbassadors } = useAmbassadors();
   return (
     <>
+      {loading && <Loading />}
       <div className="relative lg:grid md:grid grid-cols-11">
         {/* Small device Navbar */}
         <SmallNavbar active="Dashboard" />
@@ -66,7 +74,7 @@ const Home = () => {
                   {general?.number_of_total_users}
                 </p>
               </div>
-              <p className="bi-person-fill text-5xl mt-1"></p>
+              <p className="bi-person-fill text-5xl mt-1 text-teal-500"></p>
             </div>
             <div className="flex justify-between bg2 rounded p-4 h-22 text-white shadow shadow-zinc-950 lg:mb-0 mb-3">
               <div className="">
@@ -77,7 +85,7 @@ const Home = () => {
                   {general?.number_of_cards}
                 </p>
               </div>
-              <p className="bi-person-fill text-5xl mt-1"></p>
+              <p className="bi-credit-card-2-front-fill text-5xl mt-1 text-teal-500"></p>
             </div>
             <div className="flex justify-between bg2 rounded p-4 h-22 text-white shadow shadow-zinc-950 lg:mb-0 mb-3">
               <div className="">
@@ -88,7 +96,7 @@ const Home = () => {
                   {activeAmbassadors.length}
                 </p>
               </div>
-              <p className="bi-person-fill text-5xl mt-1"></p>
+              <p className="bi-person-heart text-5xl mt-1 text-teal-500"></p>
             </div>
             <div className="flex justify-between bg2 rounded p-4 h-22 text-white shadow shadow-zinc-950 lg:mb-0 mb-3">
               <div className="">
@@ -99,6 +107,7 @@ const Home = () => {
                   {pendingAmbassadors.length}
                 </p>
               </div>
+              <p className="bi-person-heart text-5xl mt-1 text-teal-500"></p>
             </div>
           </div>
 

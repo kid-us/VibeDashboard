@@ -26,9 +26,12 @@ const useAmbassadors = () => {
     []
   );
 
+  const [loading, setLoading] = useState<boolean>(true);
+
   useEffect(() => {
     // Fetch Active Ambassadors
     const fetchActiveAmbassadors = async () => {
+      setLoading(true);
       try {
         const response = await axios.get(
           `${baseUrl}/api/v1/ambassador/get-active`,
@@ -39,6 +42,7 @@ const useAmbassadors = () => {
           }
         );
         setActiveAmbassadors(response.data);
+        setLoading(false);
       } catch (error) {
         console.error(error);
       }
@@ -46,6 +50,7 @@ const useAmbassadors = () => {
 
     // Fetch Pending Ambassadors
     const fetchPendingAmbassadors = async () => {
+      setLoading(true);
       try {
         const response = await axios.get(
           `${baseUrl}/api/v1/ambassador/get-pendings`,
@@ -56,6 +61,7 @@ const useAmbassadors = () => {
           }
         );
         setPendingAmbassadors(response.data);
+        setLoading(false);
       } catch (error) {
         console.error(error);
       }
@@ -68,6 +74,7 @@ const useAmbassadors = () => {
   return {
     activeAmbassadors,
     pendingAmbassadors,
+    loading,
   };
 };
 

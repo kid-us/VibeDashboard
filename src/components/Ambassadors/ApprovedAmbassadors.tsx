@@ -1,9 +1,11 @@
 import useAmbassadors from "@/hook/useAmbassadors";
+import Loading from "../Loading/Loading";
 
 const ApprovedAmbassadors = () => {
-  const { activeAmbassadors } = useAmbassadors();
+  const { activeAmbassadors, loading } = useAmbassadors();
   return (
     <>
+      {loading && <Loading />}
       <p className="mt-5 text-white py-2 text-sm">Approved Ambassadors</p>
       {/* Header */}
       <div className="text-white lg:mt-2 md:mt-2 border border-gray-700 rounded p-3 lg:mb-0 md:mb-0 mb-4">

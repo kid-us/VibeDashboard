@@ -88,19 +88,19 @@ function PieCharts({ free, pro, proPlus }: Props) {
                         <tspan
                           x={viewBox.cx}
                           y={viewBox.cy}
-                          className="fill-foreground text-3xl font-bold"
+                          className="fill-foreground text-2xl font-bold"
                         >
                           {free + pro + proPlus}
                         </tspan>
                         <tspan
                           x={viewBox.cx}
                           y={viewBox.cy}
-                          className="fill-foreground text-3xl font-bold"
+                          className="fill-foreground"
                         ></tspan>
                         <tspan
                           x={viewBox.cx}
                           y={(viewBox.cy || 0) + 24}
-                          className="fill-muted-foreground "
+                          className="fill-muted-foreground text-sm tracking-tight"
                         >
                           Users
                         </tspan>
