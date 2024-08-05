@@ -102,30 +102,30 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 mt-7 gap-x-5">
+          <div className="grid lg:grid-cols-2 lg:mt-7 mt-2 gap-x-5">
             <PieCharts
               free={general ? general.subscription_info.free : 0}
               pro={general ? general.subscription_info.pro : 0}
               proPlus={general ? general.subscription_info.proPlus : 0}
             />
-            <div className="bg2 rounded p-6">
+            <div className="bg2 rounded lg:p-6 p-4">
               <p className="text-white text-xl font-bold">Total Users</p>
-              <div className="flex justify-between gap-x-5 mt-14">
+              <div className="flex justify-between gap-x-2 lg:mt-14 mt-4">
                 <div className="px-4 py-2 bg-white w-full rounded">
-                  <p className="text-2xl font-bold">Free </p>
-                  <p className="text-4xl font-extrabold">
+                  <p className="lg:text-2xl">Free </p>
+                  <p className="lg:text-4xl text-xl font-extrabold">
                     {general?.subscription_info.free}
                   </p>
                 </div>
                 <div className="px-4 py-2 bg-white w-full rounded">
-                  <p className="text-2xl font-bold">Pro </p>
-                  <p className="text-4xl font-extrabold">
+                  <p className="lg:text-2xl">Pro </p>
+                  <p className="lg:text-4xl text-xl font-extrabold">
                     {general?.subscription_info.pro}
                   </p>
                 </div>
                 <div className="px-4 py-2 bg-white w-full rounded">
-                  <p className="text-2xl font-bold">Pro+ </p>
-                  <p className="text-4xl font-extrabold">
+                  <p className="lg:text-2xl">Pro+ </p>
+                  <p className="lg:text-4xl text-xl font-extrabold">
                     {general?.subscription_info.proPlus}
                   </p>
                 </div>
@@ -133,7 +133,7 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 mt-7 gap-x-5">
+          <div className="grid lg:grid-cols-2 lg:mt-7 mt-4 gap-x-5">
             {/* Subscription */}
             <Subscription />
             {/* Materials */}
