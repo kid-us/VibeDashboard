@@ -72,22 +72,22 @@ const Materials = () => {
     <div className="bg2 rounded p-4">
       <p className="text-gray-400 font-bold mb-5">Cards</p>
 
-      <div className="grid grid-cols-3 text-white">
+      <div className="grid grid-cols-4 text-white">
         <p className="text-gray-400 text-sm mb-3">Type</p>
         <p className="text-gray-400 text-sm mb-3">Price</p>
         <p className="text-gray-400 text-sm mb-3">Edit</p>
 
         {/* Metal */}
-        <div className="col-span-3 grid grid-cols-3 secondary-bg mb-2 py-3 px-3 rounded">
+        <div className="col-span-4 grid grid-cols-4 secondary-bg mb-2 py-3 px-3 rounded">
           <p className="">Metal</p>
           <p className="">€{cards?.metal.price}</p>
 
-          <div className="flex gap-x-3">
+          <div className="col-span-2 flex gap-x-3">
             {editBtn === "metal" ? (
               <>
                 <input
                   type="number"
-                  className="ps-3 text-black font-bold focus:outline-none rounded w-28 h-8"
+                  className="ps-3 text-black font-bold focus:outline-none rounded lg:w-28 w-20 lg:h-8 h-9"
                   onChange={(e) => setMetal(e.currentTarget.value)}
                   value={metal}
                 />
@@ -111,15 +111,15 @@ const Materials = () => {
         </div>
 
         {/* Bamboo */}
-        <div className="col-span-3 grid grid-cols-3 secondary-bg mb-2 py-3 px-3 rounded">
+        <div className="col-span-4 grid grid-cols-4 secondary-bg mb-2 py-3 px-3 rounded">
           <p className="">Bamboo</p>
           <p className="">€{cards?.bamboo.price}</p>
-          <div className="flex gap-x-3">
+          <div className="col-span-2 flex gap-x-3">
             {editBtn === "bamboo" ? (
               <>
                 <input
                   type="number"
-                  className="ps-3 text-black font-bold focus:outline-none rounded w-28 h-8"
+                  className="ps-3 text-black font-bold focus:outline-none rounded lg:w-28 w-20 lg:h-8 h-9"
                   onChange={(e) => setBamboo(e.currentTarget.value)}
                   value={bamboo}
                 />
@@ -143,15 +143,15 @@ const Materials = () => {
         </div>
 
         {/* Recycled */}
-        <div className="col-span-3 grid grid-cols-3 secondary-bg mb-2 py-3 px-3 rounded">
+        <div className="col-span-4 grid grid-cols-4 secondary-bg mb-2 py-3 px-3 rounded">
           <p className="mb-1">Recycled Paper</p>
           <p className="mb-1">€{cards?.recycled_paper.price}</p>
-          <div className="flex gap-x-3">
+          <div className="col-span-2 flex gap-x-3">
             {editBtn === "recycled_paper" ? (
               <>
                 <input
                   type="number"
-                  className="ps-3 text-black font-bold focus:outline-none rounded w-28 h-9"
+                  className="ps-3 text-black font-bold focus:outline-none rounded lg:w-28 w-20 lg:h-8 h-9"
                   onChange={(e) => setPaper(e.currentTarget.value)}
                   value={paper}
                 />
