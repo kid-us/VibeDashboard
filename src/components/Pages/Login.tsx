@@ -7,7 +7,6 @@ import axios from "axios";
 import { baseUrl } from "../../services/request";
 import useDocumentTitle from "@/hook/useDocumentTitle";
 import Button from "../Button/Button";
-import useAuth from "@/store/useAuth";
 
 const schema = z.object({
   password: z.string().min(4, {
@@ -21,8 +20,6 @@ type FormData = z.infer<typeof schema>;
 const Login = () => {
   const [title] = useState("Login");
   useDocumentTitle(title);
-
-  const { login } = useAuth();
 
   const navigate = useNavigate();
   // States
@@ -41,28 +38,22 @@ const Login = () => {
   // On Form Submit
   const onSubmit = (data: FieldValues) => {
     setLoader(true);
+
+    const logData = {
+      email: data.email,
+      password: data.password,
+    };
+
     axios
-      .post(`${baseUrl}/api/v1/auth/login`, data, {
+      .post(`${baseUrl}/api/v1/dashboard/login`, logData, {
         headers: {
           "Content-Type": "application/json",
         },
         withCredentials: true,
       })
-      .then(() => {
-        axios
-          .get(`${baseUrl}/api/v1/auth/me`, {
-            headers: {
-              "Content-Type": "application/json",
-            },
-            withCredentials: true,
-          })
-          .then((response) => {
-            login(response.data.username);
-            navigate("/");
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+      .then((response) => {
+        console.log(response);
+        navigate("/");
       })
       .catch((error) => {
         setLoader(false);

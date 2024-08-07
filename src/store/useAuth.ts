@@ -1,18 +1,20 @@
 import create from "zustand";
 
 interface AuthState {
-  username: string | null;
+  email: string | null;
+  type: string | null;
   isAuthenticated: boolean;
-  login: (username: string) => void;
+  login: (email: string, type: string) => void;
   logout: () => void;
 }
 
 const useAuth = create<AuthState>((set) => ({
-  username: null,
+  email: null,
+  type: null,
   isAuthenticated: false,
 
-  login: (username) => set({ username, isAuthenticated: true }),
-  logout: () => set({ username: null, isAuthenticated: false }),
+  login: (email, type) => set({ email, type, isAuthenticated: true }),
+  logout: () => set({ email: null, type: null, isAuthenticated: false }),
 }));
 
 export default useAuth;

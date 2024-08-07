@@ -1,8 +1,27 @@
 import { useState } from "react";
 import Setting from "../Modal/Setting";
+import axios from "axios";
+import { baseUrl } from "@/services/request";
+import { useNavigate } from "react-router-dom";
 
 const Nav = () => {
   const [setting, setSetting] = useState<boolean>(false);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    axios
+      .get(`${baseUrl}/api/v1/dashboard/logout`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then(() => {
+        navigate("/login");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <>
@@ -26,7 +45,10 @@ const Nav = () => {
             onClick={() => setSetting(true)}
             className="cursor-pointer bi-person-circle text-2xl"
           ></p>
-          <p className="bi-box-arrow-right text-2xl"></p>
+          <p
+            onClick={() => handleLogout()}
+            className="bi-box-arrow-right text-2xl cursor-pointer"
+          ></p>
         </div>
       </div>
 

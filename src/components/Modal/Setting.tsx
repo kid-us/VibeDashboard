@@ -41,7 +41,7 @@ const Setting = ({ onClose }: Props) => {
   const onSubmit = (data: FieldValues) => {
     setLoader(true);
     axios
-      .post(`${baseUrl}/api/v1/auth/login`, data, {
+      .post(`${baseUrl}/api/v1/dashboard/update-admin-password`, data, {
         headers: {
           "Content-Type": "application/json",
         },
