@@ -5,6 +5,7 @@ import Ambassadors from "./components/Pages/Ambassadors";
 import Login from "./components/Pages/Login";
 import Forms from "./components/Pages/Forms";
 import Protected from "./components/Protected/Protected";
+import Orders from "./components/Pages/Order";
 
 function App() {
   return (
@@ -32,6 +33,14 @@ function App() {
           element={
             <Protected>
               <Forms />
+            </Protected>
+          }
+        />
+        <Route
+          path="/orders"
+          element={
+            <Protected>
+              <Orders />
             </Protected>
           }
         />

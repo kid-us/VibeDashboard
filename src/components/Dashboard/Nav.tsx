@@ -10,7 +10,7 @@ const Nav = () => {
 
   const handleLogout = () => {
     axios
-      .get(`${baseUrl}/api/v1/dashboard/logout`, {
+      .post(`${baseUrl}/api/v1/dashboard/logout`, {
         headers: {
           "Content-Type": "application/json",
         },

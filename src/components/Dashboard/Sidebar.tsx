@@ -13,13 +13,13 @@ export const tabs = [
     title: "Ambassadors",
     path: "/ambassadors",
   },
+  { id: 3, icon: "bi-border-width", title: "Orders", path: "/orders" },
   {
-    id: 3,
+    id: 4,
     icon: "bi-input-cursor-text",
     title: "Forms",
     path: "/forms",
   },
-  //   { id: 4, icon: "bi-book-fill", title: "Courses", path: "/courses" },
   //   { id: 5, icon: "bi-people-fill", title: "Students", path: "/students" },
   //   { id: 6, icon: "bi-gear-fill", title: "Setting", path: "/setting" },
 ];

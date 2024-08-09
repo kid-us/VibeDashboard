@@ -44,6 +44,8 @@ const Login = () => {
       password: data.password,
     };
 
+    console.log(logData);
+
     axios
       .post(`${baseUrl}/api/v1/dashboard/login`, logData, {
         headers: {
@@ -53,7 +55,7 @@ const Login = () => {
       })
       .then((response) => {
         console.log(response);
-        navigate("/");
+        navigate("/login");
       })
       .catch((error) => {
         setLoader(false);
