@@ -13,7 +13,8 @@ export const tabs = [
     title: "Ambassadors",
     path: "/ambassadors",
   },
-  { id: 3, icon: "bi-border-width", title: "Orders", path: "/orders" },
+  { id: 3, icon: "bi-border-width", title: "Cards", path: "/cards" },
+  { id: 5, icon: "bi-wallet-fill", title: "Wallets", path: "/wallets" },
   {
     id: 4,
     icon: "bi-input-cursor-text",

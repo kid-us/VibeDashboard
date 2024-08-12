@@ -5,7 +5,8 @@ import Ambassadors from "./components/Pages/Ambassadors";
 import Login from "./components/Pages/Login";
 import Forms from "./components/Pages/Forms";
 import Protected from "./components/Protected/Protected";
-import Orders from "./components/Pages/Order";
+import Cards from "./components/Pages/Cards";
+import Wallets from "./components/Pages/Wallets";
 
 function App() {
   return (
@@ -37,10 +38,18 @@ function App() {
           }
         />
         <Route
-          path="/orders"
+          path="/cards"
           element={
             <Protected>
-              <Orders />
+              <Cards />
+            </Protected>
+          }
+        />
+        <Route
+          path="/wallets"
+          element={
+            <Protected>
+              <Wallets />
             </Protected>
           }
         />

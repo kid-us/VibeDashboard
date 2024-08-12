@@ -53,6 +53,7 @@ interface allOrders {
   vibecardLogo: boolean;
   orientation: string;
   card_img: string;
+  created_at: string;
 }
 
 interface TotalOrders {
@@ -67,11 +68,12 @@ interface TotalOrders {
     vibecardLogo: boolean;
     orientation: string;
     card_img: string;
+    created_at: string;
   }[];
 }
 
 const Orders = () => {
-  const [title] = useState("Orders");
+  const [title] = useState("Cards");
   useDocumentTitle(title);
 
   const [orders, setOrders] = useState<allOrders[]>([]);
@@ -112,6 +114,16 @@ const Orders = () => {
       });
   }, []);
 
+  function getDate(timestamp: string) {
+    const date = new Date(timestamp);
+
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const year = date.getFullYear();
+
+    return `${day}-${month}-${year}`;
+  }
+
   const handleDownload = async (imageUrl: string) => {
     try {
       // Replace with your image URL
@@ -143,11 +155,11 @@ const Orders = () => {
       {loading && <Loading />}
       <div className="relative lg:grid md:grid grid-cols-11">
         {/* Small device Navbar */}
-        <SmallNavbar active="Orders" />
+        <SmallNavbar active="Cards" />
         {/* Sidebar */}
         <div className="lg:col-span-2 w-full">
           {/* <div className=""> */}
-          <Sidebar active="Orders" />
+          <Sidebar active="Cards" />
           {/* </div> */}
         </div>
         <div className="lg:col-span-9 lg:px-2 md:px-2 px-1 py-2 md:col-span-10">
@@ -157,7 +169,7 @@ const Orders = () => {
           {/* Contents */}
           <h1 className="text-white text-xl my-3 ms-1">Orders</h1>
 
-          <div className="px-2 mt-5 pb-96">
+          <div className="px-2 mt-5">
             {orders.length > 0 ? (
               orders.map((order) => (
                 <div
@@ -179,8 +191,11 @@ const Orders = () => {
                         Card Information
                       </p>
                       <div className="grid grid-cols-2 lg:gap-x-0 gap-x-2">
-                        <div className="col-span-2">
-                          <p className="mb-5 text-white">
+                        <div className="col-span-2 mb-5">
+                          <p className="text-white font-poppins">
+                            Order Date : {getDate(order.created_at)}
+                          </p>
+                          <p className="text-white">
                             Quantity :{" "}
                             <span className="text-2xl text-teal-500">
                               {order.quantity}
@@ -233,66 +248,77 @@ const Orders = () => {
                       <p className="lg:font-bold lg:text-xl text-xs text-white mb-5">
                         Delivery Information
                       </p>
-                      <p className="lg:text-lg text-sm">
-                        <span className="text-xs text-gray-400 font-bold">
+                      <div className="lg:grid grid-cols-5">
+                        <p className="mb-2 col-span-2 font-poppins text-gray-400 font-bold">
                           First Name
-                        </span>{" "}
-                        {order.order_metadata.fname}
-                      </p>
-                      <p className="lg:text-lg font-poppins text-sm">
-                        <span className="text-xs text-gray-400 font-bold">
+                        </p>
+                        <p className="col-span-3 uppercase text-sm">
+                          {order.order_metadata.fname}
+                        </p>
+
+                        <p className="mb-2 col-span-2 font-poppins text-gray-400 font-bold">
                           Last Name
-                        </span>{" "}
-                        {order.order_metadata.lname}
-                      </p>
-                      <p className="lg:text-lg font-poppins text-sm">
-                        <span className="text-xs text-gray-400 font-bold">
+                        </p>
+                        <p className="col-span-3 uppercase font-poppins text-sm">
+                          {order.order_metadata.lname}
+                        </p>
+
+                        <p className="mb-2 col-span-2 font-poppins text-gray-400 font-bold">
                           Email
-                        </span>{" "}
-                        {order.order_metadata.email}
-                      </p>
-                      <p className="lg:text-lg font-poppins text-sm">
-                        <span className="text-xs text-gray-400 font-bold">
+                        </p>
+                        <p className="col-span-3 uppercase font-poppins text-sm">
+                          {order.order_metadata.email}
+                        </p>
+
+                        <p className="mb-2 col-span-2 font-poppins text-gray-400 font-bold">
                           Location
-                        </span>{" "}
-                        {order.order_metadata.location}
-                      </p>
-                      <p className="lg:text-lg font-poppins text-sm">
-                        <span className="text-xs text-gray-400 font-bold">
+                        </p>
+                        <p className="col-span-3 uppercase font-poppins text-sm">
+                          {order.order_metadata.location}
+                        </p>
+
+                        <p className="mb-2 col-span-2 font-poppins text-gray-400 font-bold">
                           Phone
-                        </span>{" "}
-                        {order.order_metadata.phone}
-                      </p>
-                      <p className="lg:text-lg font-poppins text-sm">
-                        <span className="text-xs text-gray-400 font-bold">
+                        </p>
+                        <p className="col-span-3 uppercase font-poppins text-sm">
+                          {order.order_metadata.phone}
+                        </p>
+
+                        <p className="mb-2 col-span-2 font-poppins text-gray-400 font-bold">
                           Street
-                        </span>{" "}
-                        {order.order_metadata.street}
-                      </p>
-                      <p className="lg:text-lg font-poppins text-sm">
-                        <span className="text-xs text-gray-400 font-bold">
-                          {" "}
+                        </p>
+                        <p className="col-span-3 uppercase font-poppins text-sm">
+                          {order.order_metadata.street}
+                        </p>
+
+                        <p className="mb-2 col-span-2 font-poppins text-gray-400 font-bold">
                           Street No
-                        </span>{" "}
-                        {order.order_metadata.street_no}
-                      </p>
-                      <p className="lg:text-lg font-poppins text-sm">
-                        <span className="text-xs text-gray-400 font-bold">
+                        </p>
+                        <p className="col-span-3 uppercase font-poppins text-sm">
+                          {order.order_metadata.street_no}
+                        </p>
+
+                        <p className="mb-2 col-span-2 font-poppins text-gray-400 font-bold">
                           Address
-                        </span>{" "}
-                        {order.order_metadata.address}
-                      </p>
-                      <p className="lg:text-lg font-poppins text-sm">
-                        <span className="text-xs text-gray-400">PLZ</span>{" "}
-                        {order.order_metadata.plz}
-                      </p>
+                        </p>
+                        <p className="col-span-3 uppercase font-poppins text-sm">
+                          {order.order_metadata.address}
+                        </p>
+
+                        <p className="mb-2 col-span-2 font-poppins text-gray-400">
+                          PLZ
+                        </p>
+                        <p className="col-span-3 uppercase font-poppins text-sm">
+                          {order.order_metadata.plz}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
               ))
             ) : (
               <p className="w-full bg-white text-center py-3 text-sm">
-                List of orders will be here!
+                List of NFC card orders will be here!
               </p>
             )}
           </div>
