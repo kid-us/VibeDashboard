@@ -1,5 +1,5 @@
+import useAuth from "@/store/useAuth";
 import { Link } from "react-router-dom";
-// import Logout from "./Logout/Logout";
 
 interface Props {
   active: string;
@@ -15,17 +15,11 @@ export const tabs = [
   },
   { id: 3, icon: "bi-border-width", title: "Cards", path: "/cards" },
   { id: 5, icon: "bi-wallet-fill", title: "Wallets", path: "/wallets" },
-  {
-    id: 4,
-    icon: "bi-input-cursor-text",
-    title: "Forms",
-    path: "/forms",
-  },
-  //   { id: 5, icon: "bi-people-fill", title: "Students", path: "/students" },
-  //   { id: 6, icon: "bi-gear-fill", title: "Setting", path: "/setting" },
 ];
 
 const Sidebar = ({ active }: Props) => {
+  const { type } = useAuth();
+
   return (
     <>
       <div className="lg:block md:block hidden sticky top-0 secondary-bg border-r border-gray-700 h-[100dvh] lg:pe-3 pt-3">
@@ -50,9 +44,19 @@ const Sidebar = ({ active }: Props) => {
               <span className={`lg:inline hidden lg:ms-5`}>{tab.title}</span>
             </Link>
           ))}
-
-          {/* Logout */}
-          {/* <Logout /> */}
+          {type === "super_admin" && (
+            <Link
+              to={"/forms"}
+              className={`${
+                active === "Forms"
+                  ? "lg:bg-teal-600 rounded lg:text-black md:text-teal-400"
+                  : "text-white"
+              } block mb-5 lg:text-xl md:text-3xl p-2`}
+            >
+              <span className={`bi-input-cursor-text`}></span>
+              <span className={`lg:inline hidden lg:ms-5`}>Forms</span>
+            </Link>
+          )}
         </div>
       </div>
     </>

@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { baseUrl } from "../../services/request";
 import Button from "../Button/Button";
+import useAuth from "@/store/useAuth";
 
 interface Props {
   onClose: () => void;
@@ -21,10 +21,9 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const Setting = ({ onClose }: Props) => {
+  const { type } = useAuth();
+
   const [approved, setApproved] = useState(false);
-  //   Approve
-  const navigate = useNavigate();
-  // States
   const [updateError, setUpdateError] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState(false);
   const [loader, setLoader] = useState(false);
@@ -40,24 +39,51 @@ const Setting = ({ onClose }: Props) => {
   // On Form Submit
   const onSubmit = (data: FieldValues) => {
     setLoader(true);
-    axios
-      .post(`${baseUrl}/api/v1/dashboard/update-admin-password`, data, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        withCredentials: true,
-      })
 
-      .then((response) => {
-        console.log(response);
-        setApproved(true);
-        navigate("/login");
-      })
-      .catch((error) => {
-        setLoader(false);
-        setUpdateError(true);
-        console.log(error);
-      });
+    const updateData = {
+      email: data.email,
+      password: data.password,
+    };
+
+    if (type === "super_admin") {
+      axios
+        .put(
+          `${baseUrl}/api/v1/dashboard/update-super-admin-password`,
+          updateData,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+            withCredentials: true,
+          }
+        )
+
+        .then(() => {
+          setApproved(true);
+        })
+        .catch((error) => {
+          setLoader(false);
+          setUpdateError(true);
+          console.log(error);
+        });
+    } else {
+      axios
+        .put(`${baseUrl}/api/v1/dashboard/update-admin-password`, updateData, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        })
+
+        .then(() => {
+          setApproved(true);
+        })
+        .catch((error) => {
+          setLoader(false);
+          setUpdateError(true);
+          console.log(error);
+        });
+    }
   };
 
   return (
