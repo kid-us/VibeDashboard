@@ -10,11 +10,16 @@ const Nav = () => {
 
   const handleLogout = () => {
     axios
-      .post(`${baseUrl}/api/v1/dashboard/logout`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
+      .post(
+        `${baseUrl}/api/v1/dashboard/logout`,
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      )
       .then(() => {
         navigate("/login");
       })

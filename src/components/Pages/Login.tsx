@@ -44,8 +44,6 @@ const Login = () => {
       password: data.password,
     };
 
-    console.log(logData);
-
     axios
       .post(`${baseUrl}/api/v1/dashboard/login`, logData, {
         headers: {
@@ -53,16 +51,13 @@ const Login = () => {
         },
         withCredentials: true,
       })
-      .then((response) => {
-        console.log(response);
-        navigate("/login");
+      .then(() => {
+        navigate("/");
       })
       .catch((error) => {
         setLoader(false);
         console.log(error);
-        if (error.response.status === 401) {
-          setLoginError("Invalid Email and Password");
-        }
+        setLoginError("Invalid Email and Password");
       });
   };
 
@@ -77,7 +72,7 @@ const Login = () => {
                 {/* Login error */}
                 {loginError !== "" && (
                   <div className="relative">
-                    <p className="absolute -top-10 text-red-600 text-sm">
+                    <p className="absolute -top-8 text-red-600">
                       <span className="bi-exclamation-triangle-fill me-4"></span>
                       {loginError}
                     </p>
