@@ -124,31 +124,31 @@ const Orders = () => {
     return `${day}-${month}-${year}`;
   }
 
-  const handleDownload = async (imageUrl: string) => {
-    try {
-      // Replace with your image URL
+  // const handleDownload = async (imageUrl: string) => {
+  //   try {
+  //     // Replace with your image URL
 
-      // Fetch the image
-      const response = await axios.get(imageUrl, { responseType: "blob" });
+  //     // Fetch the image
+  //     const response = await axios.get(imageUrl, { responseType: "blob" });
 
-      // Create a blob from the image data
-      const blob = new Blob([response.data], { type: "image/jpeg" });
+  //     // Create a blob from the image data
+  //     const blob = new Blob([response.data], { type: "image/jpeg" });
 
-      // Create a link element
-      const link = document.createElement("a");
-      link.href = URL.createObjectURL(blob);
-      link.download = "downloaded-image.jpg"; // Name of the downloaded file
+  //     // Create a link element
+  //     const link = document.createElement("a");
+  //     link.href = URL.createObjectURL(blob);
+  //     link.download = "downloaded-image.jpg"; // Name of the downloaded file
 
-      // Append the link to the document and trigger the download
-      document.body.appendChild(link);
-      link.click();
+  //     // Append the link to the document and trigger the download
+  //     document.body.appendChild(link);
+  //     link.click();
 
-      // Clean up and remove the link
-      document.body.removeChild(link);
-    } catch (error) {
-      console.error("Failed to download image", error);
-    }
-  };
+  //     // Clean up and remove the link
+  //     document.body.removeChild(link);
+  //   } catch (error) {
+  //     console.error("Failed to download image", error);
+  //   }
+  // };
 
   return (
     <>
@@ -190,7 +190,7 @@ const Orders = () => {
                       <p className="lg:font-bold lg:text-xl text-xs text-white mb-5">
                         Card Information
                       </p>
-                      <div className="grid grid-cols-2 lg:gap-x-0 gap-x-2">
+                      <div className="lg:grid grid-cols-2 lg:gap-x-0 gap-x-2">
                         <div className="col-span-2 mb-5">
                           <p className="text-white font-poppins">
                             Order Date : {getDate(order.created_at)}
@@ -212,12 +212,12 @@ const Orders = () => {
                             className="w-28 rounded"
                           />
                         </div>
-                        <div>
+                        {/* <div>
                           <button
                             className="bi-download lg:text-3xl text-2xl lg:pt-10 pt-8 text-white"
                             onClick={() => handleDownload(order.front_image)}
                           ></button>
-                        </div>
+                        </div> */}
                         {/* Back Image */}
                         {order.back_image && (
                           <>
@@ -231,14 +231,14 @@ const Orders = () => {
                                 className="w-28 h-20 rounded object-cover"
                               />
                             </div>
-                            <div>
+                            {/* <div>
                               <button
                                 className="bi-download lg:text-3xl text-2xl lg:pt-10 pt-8 text-white mt-5"
                                 onClick={() =>
                                   handleDownload(order.front_image)
                                 }
                               ></button>
-                            </div>
+                            </div> */}
                           </>
                         )}
                       </div>
