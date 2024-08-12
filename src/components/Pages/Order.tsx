@@ -179,6 +179,14 @@ const Orders = () => {
                         Card Information
                       </p>
                       <div className="grid grid-cols-2 lg:gap-x-0 gap-x-2">
+                        <div className="col-span-2">
+                          <p className="mb-5 text-white">
+                            Quantity :{" "}
+                            <span className="text-2xl text-teal-500">
+                              {order.quantity}
+                            </span>
+                          </p>
+                        </div>
                         <div>
                           <p className="text-gray-300 text-xs mb-2">
                             Front Image
