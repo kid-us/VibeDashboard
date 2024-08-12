@@ -2,6 +2,7 @@ import { useState } from "react";
 import { tabs } from "./Sidebar";
 import { Link } from "react-router-dom";
 import Setting from "../Modal/Setting";
+import useAmbassadors from "@/hook/useAmbassadors";
 
 interface Props {
   active: string;
@@ -10,6 +11,9 @@ interface Props {
 const SmallNavbar = ({ active }: Props) => {
   const [menu, setMenu] = useState(false);
   const [setting, setSetting] = useState<boolean>(false);
+
+  const { pendingAmbassadors } = useAmbassadors();
+  const [message, setMessage] = useState<boolean>(false);
 
   return (
     <>
@@ -24,7 +28,10 @@ const SmallNavbar = ({ active }: Props) => {
 
         <div className="text-white flex gap-x-10 ">
           <div className="relative">
-            <p className="cursor-pointer bi-bell-fill text-xl"></p>
+            <p
+              onClick={() => setMessage(!message)}
+              className="cursor-pointer bi-bell-fill text-xl"
+            ></p>
             <p className="absolute -top-2 left-3 bg-red-500 rounded-full w-5 h-5 text-center">
               <span className="absolute -top-[3px] left-[5px]">0</span>
             </p>
@@ -58,6 +65,37 @@ const SmallNavbar = ({ active }: Props) => {
         </div>
       )}
 
+      {/* Message */}
+      {message && (
+        <>
+          <div className="fixed lg:w-[20%] w-[80%] z-50 top-14 right-0 bg-white rounded p-2">
+            {pendingAmbassadors.length > 0 ? (
+              <>
+                {pendingAmbassadors.map((pending) => (
+                  <div className="flex justify-between bg-teal-500 rounded px-2 py-1 mb-2">
+                    <div className="flex gap-x-4">
+                      <p className="font-bold">{pending.first_name}</p>
+                      <p className="font-bold">{pending.last_name}</p>
+                    </div>
+                    <Link
+                      to="/ambassadors"
+                      className="bi-box-arrow-in-right text-xl text-white"
+                    ></Link>
+                  </div>
+                ))}
+                <p className="text-xs mt-3 ms-1 font-bold">
+                  Requested to become an Ambassador
+                </p>
+              </>
+            ) : (
+              <p className="text-sm mt-3 font-bold text-red-600">
+                There is no message to view!
+              </p>
+            )}
+          </div>
+        </>
+      )}
+      {/* Setting */}
       {setting && <Setting onClose={() => setSetting(false)} />}
     </>
   );
