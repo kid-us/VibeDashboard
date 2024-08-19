@@ -6,29 +6,18 @@ const ApprovedAmbassadors = () => {
   return (
     <>
       {loading && <Loading />}
-      <p className="mt-5 text-white py-2 text-sm">Approved Ambassadors</p>
-      {/* Header */}
-      <div className="text-white lg:mt-2 md:mt-2 border border-gray-700 rounded p-3 lg:mb-0 md:mb-0 mb-4">
-        <div className="lg:flex justify-between w-full">
-          <div>
-            <p className="text-gray-200">Headline</p>
-            <p className="text-gray-400 text-xs">
-              List of Approved Ambassador.
-            </p>
-          </div>
-        </div>
-      </div>
+      <p className="mt-5 text-white py-2 font-poppins">Approved Ambassadors</p>
 
       {/* Table */}
       <div className="lg:grid md:grid hidden lg:grid-cols-12 md:grid-cols-12 grid-cols-1 gap-x-5 bg-gray-950 p-2 text-white mb-2 mt-1">
         <div className="col-span-1">
-          <p className="text-[14px] logo">First Name</p>
+          <p className="text-[14px] font-poppins logo">First Name</p>
         </div>
         <div className="col-span-1">
-          <p className="text-[14px]">Last Name</p>
+          <p className="text-[14px] font-poppins">Last Name</p>
         </div>
         <div className="col-span-1">
-          <p className="text-[14px]">Email</p>
+          <p className="text-[14px] font-poppins">Email</p>
         </div>
         <div className="col-span-1">
           <p className="text-md bi-linkedin text-blue-500"></p>
@@ -55,14 +44,14 @@ const ApprovedAmbassadors = () => {
           <p className="text-md bi-globe text-blue-900"></p>
         </div>
         <div className="col-span-1">
-          <p className="text-sm">Earning</p>
+          <p className="text-sm font-poppins">Earning</p>
         </div>
       </div>
 
       {/* Pending */}
       {activeAmbassadors.length === 0 ? (
-        <p className="w-full bg-white text-center py-3 text-sm">
-          List of requested ambassadors
+        <p className="w-full bg-white text-center py-3 text-sm font-poppins">
+          List of approved ambassadors will be here
         </p>
       ) : (
         activeAmbassadors.map((active) => (
@@ -72,25 +61,25 @@ const ApprovedAmbassadors = () => {
           >
             {/* First Name */}
             <div className="col-span-1 lg:col-span-1 md:col-span-1">
-              <p className="lg:hidden md:hidden text-xs mb-3 text-gray-400">
+              <p className="lg:hidden md:hidden text-xs mb-3 text-gray-400 font-poppins">
                 First Name
               </p>
-              <p className="text-sm text-ellipsis overflow-hidden text-nowrap">
+              <p className="text-sm text-ellipsis overflow-hidden text-nowrap font-poppins">
                 {active.first_name}
               </p>
             </div>
             {/* Last Name */}
             <div className="col-span-1">
-              <p className="lg:hidden md:hidden text-xs mb-3 text-gray-400">
+              <p className="lg:hidden md:hidden text-xs mb-3 text-gray-400 font-poppins">
                 Last Name
               </p>
-              <p className="text-sm text-ellipsis overflow-hidden text-nowrap">
+              <p className="text-sm text-ellipsis overflow-hidden text-nowrap font-poppins">
                 {active.last_name}
               </p>
             </div>
             {/* Email */}
             <div className="col-span-1">
-              <p className="lg:hidden md:hidden text-xs mb-3 text-gray-400">
+              <p className="lg:hidden md:hidden text-xs mb-3 text-gray-400 font-poppins">
                 Email
               </p>
               <p className="text-sm text-ellipsis overflow-hidden text-nowrap">
@@ -106,7 +95,7 @@ const ApprovedAmbassadors = () => {
             </div>
             {/* linkedin */}
             <div className="col-span-1">
-              <p className="lg:hidden md:hidden text-xs mb-3 bi-linkedin text-gray-400">
+              <p className="lg:hidden md:hidden text-xs mb-3 bi-linkedin text-gray-400 font-poppins">
                 <span className="ms-1"></span>
                 LinkedIn
               </p>
@@ -122,7 +111,7 @@ const ApprovedAmbassadors = () => {
             </div>
             {/* instagram */}
             <div className="col-span-1">
-              <p className="lg:hidden md:hidden text-xs mb-3 text-gray-400 bi-instagram">
+              <p className="lg:hidden md:hidden text-xs mb-3 text-gray-400 font-poppins bi-instagram">
                 <span className="ms-1"></span>
                 Instagram
               </p>
@@ -138,7 +127,7 @@ const ApprovedAmbassadors = () => {
             </div>
             {/* youtube */}
             <div className="col-span-1">
-              <p className="lg:hidden md:hidden text-xs mb-3 text-gray-400-400 bi-youtube">
+              <p className="lg:hidden md:hidden text-xs mb-3 text-gray-400 font-poppins bi-youtube">
                 <span className="ms-1"></span>
                 YouTube
               </p>
@@ -155,7 +144,7 @@ const ApprovedAmbassadors = () => {
             </div>
             {/* facebook */}
             <div className="col-span-1">
-              <p className="lg:hidden md:hidden text-xs mb-3 text-gray-400 bi-facebook">
+              <p className="lg:hidden md:hidden text-xs mb-3 text-gray-400 font-poppins bi-facebook">
                 <span className="ms-1"></span>
                 Facebook
               </p>
@@ -171,7 +160,7 @@ const ApprovedAmbassadors = () => {
             </div>
             {/* twitch */}
             <div className="lg:col-span-1 md:col-span-1 col-span-1">
-              <p className="lg:hidden md:hidden text-xs mb-3 text-gray-400 bi-twitch">
+              <p className="lg:hidden md:hidden text-xs mb-3 text-gray-400 font-poppins bi-twitch">
                 <span className="ms-1"></span>
                 Twitch
               </p>
@@ -187,7 +176,7 @@ const ApprovedAmbassadors = () => {
             </div>
             {/* twitter */}
             <div className="lg:col-span-1 md:col-span-1 col-span-1">
-              <p className="lg:hidden md:hidden text-xs mb-3 text-gray-400 bi-twitter">
+              <p className="lg:hidden md:hidden text-xs mb-3 text-gray-400 font-poppins bi-twitter">
                 <span className="ms-1"></span>
                 Twitter
               </p>
@@ -203,7 +192,7 @@ const ApprovedAmbassadors = () => {
             </div>
             {/* tik tok */}
             <div className="lg:col-span-1 md:col-span-1 col-span-1">
-              <p className="lg:hidden md:hidden text-xs mb-3 text-gray-400 bi-tiktok">
+              <p className="lg:hidden md:hidden text-xs mb-3 text-gray-400 font-poppins bi-tiktok">
                 <span className="ms-1"></span>
                 Tik tok
               </p>
@@ -219,7 +208,7 @@ const ApprovedAmbassadors = () => {
             </div>
             {/* website */}
             <div className="lg:col-span-1 md:col-span-1 col-span-1">
-              <p className="lg:hidden md:hidden text-xs mb-3 text-gray-400 bi-globe">
+              <p className="lg:hidden md:hidden text-xs mb-3 text-gray-400 font-poppins bi-globe">
                 <span className="ms-1"></span>
                 Website
               </p>
@@ -234,7 +223,7 @@ const ApprovedAmbassadors = () => {
               )}
             </div>
             <div>
-              <p className="lg:hidden md:hidden text-xs mb-3 text-gray-400">
+              <p className="lg:hidden md:hidden text-xs mb-3 text-gray-400 font-poppins">
                 Earning
               </p>
               <p className="text-sm text-ellipsis overflow-hidden text-nowrap">

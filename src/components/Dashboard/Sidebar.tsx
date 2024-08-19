@@ -36,12 +36,14 @@ const Sidebar = ({ active }: Props) => {
               to={tab.path}
               className={`${
                 active === tab.title
-                  ? "lg:bg-teal-600 rounded lg:text-black md:text-teal-400"
+                  ? "lg:bg-teal-500 rounded lg:text-black md:text-teal-400"
                   : "text-white"
               } block mb-5 lg:text-xl md:text-3xl p-2`}
             >
               <span className={`${tab.icon}`}></span>
-              <span className={`lg:inline hidden lg:ms-5`}>{tab.title}</span>
+              <span className={`lg:inline hidden lg:ms-5 font-poppins`}>
+                {tab.title}
+              </span>
             </Link>
           ))}
           {type === "super_admin" && (
