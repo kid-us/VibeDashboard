@@ -127,9 +127,6 @@ const Orders = () => {
         };
 
         setPagination(pagination);
-
-        console.log(response);
-
         setOrders(parsedOrders);
         setLoading(false);
       })
@@ -173,8 +170,6 @@ const Orders = () => {
       console.error("Failed to download image", error);
     }
   };
-
-  console.log(orders);
 
   return (
     <>
