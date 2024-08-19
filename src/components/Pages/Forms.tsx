@@ -138,7 +138,7 @@ const Forms = () => {
           {/* Admins */}
           <div className="mt-4 text-white lg:px-2">
             <p className="text-white font-poppins">Admins</p>
-            <div className="grid lg:grid-cols-3 gap-x-4 mt-4">
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-x-4 mt-4">
               {admins.map((admin, index) => (
                 <div key={index} className="bg2 rounded p-5 py-6 lg:mb-0 mb-4">
                   <p className="font-bold uppercase font-poppins">
