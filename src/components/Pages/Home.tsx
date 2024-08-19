@@ -5,7 +5,6 @@ import SmallNavbar from "../Dashboard/SmallNav";
 import useAmbassadors from "@/hook/useAmbassadors";
 import axios from "axios";
 import { baseUrl } from "@/services/request";
-import PieCharts from "../Charts/PieChart";
 import Subscription from "../Subscription/Subscription";
 import Materials from "../Materials/Materials";
 import useDocumentTitle from "@/hook/useDocumentTitle";
@@ -63,91 +62,107 @@ const Home = () => {
           <Sidebar active="Dashboard" />
           {/* </div> */}
         </div>
-        <div className="lg:col-span-9 lg:px-2 md:px-2 px-1 py-2 md:col-span-10">
+        <div className="lg:col-span-9 lg:px-4 md:px-2 px-2 py-2 md:col-span-10">
           {/* Nav */}
           <Nav />
 
-          <div className="grid lg:grid-cols-4 md:grid-cols-2 mt-5 gap-x-4">
-            <div className="flex justify-between bg2 rounded p-4 h-22 text-white shadow shadow-zinc-950 lg:mb-0 mb-3">
-              <div className="">
-                <p className="text-gray-300 text-xs uppercase">Total User</p>
-                <p className="text-3xl mt-1 font-poppins">
+          <p className="text-white font-poppins text-lg mt-2">Analytics</p>
+          <div className="grid lg:grid-cols-3 md:grid-cols-3 mt-5 gap-x-6">
+            {/* Total Users */}
+            <div className="bg2 w-full p-4 rounded-lg shadow shadow-zinc-700 lg:mb-0 mb-5 ps-6">
+              <p className="font-poppins text-gray-400">Total User</p>
+              <div className="flex justify-between mt-4">
+                <p className="text-3xl mt-1 font-poppins text-white">
                   {general?.number_of_total_users}
                 </p>
+                <p className="font-poppins bi-person-fill text-5xl text-teal-500 me-4"></p>
               </div>
-              <p className="bi-person-fill text-5xl mt-1 text-teal-500"></p>
             </div>
-            <div className="flex justify-between bg2 rounded p-4 h-22 text-white shadow shadow-zinc-950 lg:mb-0 mb-3">
-              <div className="">
-                <p className="text-gray-300 text-xs uppercase">
-                  Total Generated Cards
-                </p>
-                <p className="text-3xl mt-1 font-poppins">
+
+            {/* Total Generated Cards */}
+            <div className="bg2 w-full p-4 rounded-lg shadow shadow-zinc-700 lg:mb-0 mb-5 ps-6">
+              <p className="font-poppins text-gray-400">
+                Total Generated Cards
+              </p>
+              <div className="flex justify-between mt-4">
+                <p className="text-3xl mt-1 font-poppins text-white">
                   {general?.number_of_cards}
                 </p>
+                <p className="bi-credit-card-2-front-fill text-5xl mt-1 text-teal-500 me-4"></p>
               </div>
-              <p className="bi-credit-card-2-front-fill text-5xl mt-1 text-teal-500"></p>
             </div>
-            <div className="flex justify-between bg2 rounded p-4 h-22 text-white shadow shadow-zinc-950 lg:mb-0 mb-3">
-              <div className="">
-                <p className="text-gray-300 text-xs uppercase">
-                  Total Approved Ambassadors
-                </p>
-                <p className="text-3xl mt-1 font-poppins">
+
+            {/* Total Approved Ambassadors */}
+            <div className="bg2 w-full p-4 rounded-lg shadow shadow-zinc-700 lg:mb-0 mb-5 ps-6">
+              <p className="font-poppins text-gray-400">
+                Total Approved Ambassadors
+              </p>
+              <div className="flex justify-between mt-4">
+                <p className="text-3xl mt-1 font-poppins text-white">
                   {activeAmbassadors.length}
                 </p>
+                <p className="bi-person-heart text-5xl mt-1 text-teal-500 me-4"></p>
               </div>
-              <p className="bi-person-heart text-5xl mt-1 text-teal-500"></p>
             </div>
-            <div className="flex justify-between bg2 rounded p-4 h-22 text-white shadow shadow-zinc-950 lg:mb-0 mb-3">
-              <div className="">
-                <p className="text-gray-300 text-xs uppercase">
-                  Total Pending Ambassadors
-                </p>
-                <p className="text-3xl mt-1 font-poppins">
+
+            {/* Total Pending Ambassador */}
+            <div className="bg2 w-full p-5 rounded-lg shadow shadow-zinc-700 lg:mb-0 mb-5 lg:mt-5">
+              <p className="font-poppins text-gray-400">
+                Total Pending Ambassadors
+              </p>
+              <div className="flex justify-between mt-4">
+                <p className="text-3xl mt-1 font-poppins text-white">
                   {pendingAmbassadors.length}
                 </p>
+                <p className="bi-person-heart text-5xl mt-1 text-teal-500 me-4"></p>
               </div>
-              <p className="bi-person-heart text-5xl mt-1 text-teal-500"></p>
             </div>
-          </div>
 
-          <div className="grid lg:grid-cols-2 lg:mt-7 mt-2 gap-x-5">
-            <PieCharts
-              free={general ? general.subscription_info.free : 0}
-              pro={general ? general.subscription_info.pro : 0}
-              proPlus={general ? general.subscription_info.proPlus : 0}
-            />
-            <div className="bg2 rounded lg:p-6 p-4">
-              <p className="text-white text-xl font-bold">Total Users</p>
-              <div className="flex justify-between gap-x-2 lg:mt-14 mt-4">
-                <div className="px-4 py-2 bg-white w-full rounded">
-                  <p className="lg:text-2xl">Free </p>
-                  <p className="lg:text-4xl text-xl font-extrabold">
-                    {general?.subscription_info.free}
-                  </p>
-                </div>
-                <div className="px-4 py-2 bg-white w-full rounded">
-                  <p className="lg:text-2xl">Pro </p>
-                  <p className="lg:text-4xl text-xl font-extrabold">
-                    {general?.subscription_info.pro}
-                  </p>
-                </div>
-                <div className="px-4 py-2 bg-white w-full rounded">
-                  <p className="lg:text-2xl">Pro+ </p>
-                  <p className="lg:text-4xl text-xl font-extrabold">
-                    {general?.subscription_info.proPlus}
-                  </p>
-                </div>
+            {/* Free Subscribers */}
+            <div className="bg2 w-full p-5 rounded-lg shadow shadow-zinc-700 lg:mb-0 mb-5 lg:mt-5">
+              <p className="font-poppins text-gray-400">Free Subscribers</p>
+              <div className="flex justify-between mt-4">
+                <p className="text-3xl mt-1 font-poppins text-white">
+                  {general?.subscription_info.free}
+                </p>
+                <p className="bi-person text-5xl mt-1 text-teal-500 me-4"></p>
+              </div>
+            </div>
+
+            {/* Pro Subscribers */}
+            <div className="bg2 w-full p-5 rounded-lg shadow shadow-zinc-700 lg:mb-0 mb-5 lg:mt-5">
+              <p className="font-poppins text-gray-400">Pro Subscribers</p>
+              <div className="flex justify-between mt-4">
+                <p className="text-3xl mt-1 font-poppins text-white">
+                  {general?.subscription_info.pro}
+                </p>
+                <p className="bi-person text-5xl mt-1 text-teal-500 me-4"></p>
+              </div>
+            </div>
+
+            {/* Pro Plus Subscribers */}
+            <div className="bg2 w-full p-5 rounded-lg shadow shadow-zinc-700 lg:mb-0 mb-5 lg:mt-5">
+              <p className="font-poppins text-gray-400">Pro + Subscribers</p>
+              <div className="flex justify-between mt-4">
+                <p className="text-3xl mt-1 font-poppins text-white">
+                  {general?.subscription_info.proPlus}
+                </p>
+                <p className="bi-person text-5xl mt-1 text-teal-500 me-4"></p>
               </div>
             </div>
           </div>
 
           <div className="grid lg:grid-cols-2 lg:mt-7 mt-4 gap-x-5">
             {/* Subscription */}
-            <Subscription />
+            <div>
+              <p className="text-white font-poppins mb-5">Subscription Plans</p>
+              <Subscription />
+            </div>
             {/* Materials */}
-            <Materials />
+            <div>
+              <p className="text-white font-poppins my-5">Products</p>
+              <Materials />
+            </div>
           </div>
         </div>
       </div>

@@ -83,16 +83,16 @@ const Materials = () => {
 
   return (
     <div className="bg2 rounded p-4">
-      <p className="text-gray-400 font-bold mb-5">Cards</p>
+      <p className="text-gray-300 font-poppins font-bold mb-5">Cards</p>
 
       <div className="grid grid-cols-4 text-white">
-        <p className="text-gray-400 text-sm mb-3">Type</p>
-        <p className="text-gray-400 text-sm mb-3">Price</p>
-        <p className="text-gray-400 text-sm mb-3">Edit</p>
+        <p className="text-gray-400 text-sm mb-3 font-poppins">Type</p>
+        <p className="text-gray-400 text-sm mb-3 font-poppins">Price</p>
+        <p className="text-gray-400 text-sm mb-3 font-poppins">Edit</p>
 
         {/* Metal */}
         <div className="col-span-4 grid grid-cols-4 secondary-bg mb-2 py-3 px-3 rounded">
-          <p className="">Metal</p>
+          <p className="font-poppins">Metal</p>
           <p className="font-poppins font-bold">€{cards?.metal.price}</p>
 
           <div className="col-span-2 flex gap-x-3">
@@ -100,7 +100,7 @@ const Materials = () => {
               <>
                 <input
                   type="number"
-                  className="ps-3 text-black font-bold focus:outline-none rounded lg:w-28 w-20 lg:h-8 h-9"
+                  className="ps-3 text-black font-bold font-poppins focus:outline-none rounded lg:w-28 w-20 lg:h-8 h-9"
                   onChange={(e) => setMetal(e.currentTarget.value)}
                   value={metal}
                 />
@@ -125,14 +125,14 @@ const Materials = () => {
 
         {/* Bamboo */}
         <div className="col-span-4 grid grid-cols-4 secondary-bg mb-2 py-3 px-3 rounded">
-          <p className="">Bamboo</p>
+          <p className="font-poppins">Bamboo</p>
           <p className="font-poppins font-bold">€{cards?.bamboo.price}</p>
           <div className="col-span-2 flex gap-x-3">
             {editBtn === "bamboo" ? (
               <>
                 <input
                   type="number"
-                  className="ps-3 text-black font-bold focus:outline-none rounded lg:w-28 w-20 lg:h-8 h-9"
+                  className="ps-3 text-black font-poppins font-bold focus:outline-none rounded lg:w-28 w-20 lg:h-8 h-9"
                   onChange={(e) => setBamboo(e.currentTarget.value)}
                   value={bamboo}
                 />
@@ -157,7 +157,7 @@ const Materials = () => {
 
         {/* Recycled */}
         <div className="col-span-4 grid grid-cols-4 secondary-bg mb-2 py-3 px-3 rounded">
-          <p className="mb-1">Recycled Paper</p>
+          <p className="mb-1 font-poppins">Recycled Paper</p>
           <p className="mb-1 font-poppins font-bold">
             €{cards?.recycled_paper.price}
           </p>
@@ -166,7 +166,7 @@ const Materials = () => {
               <>
                 <input
                   type="number"
-                  className="ps-3 text-black font-bold focus:outline-none rounded lg:w-28 w-20 lg:h-8 h-9"
+                  className="ps-3 text-black font-poppins font-bold focus:outline-none rounded lg:w-28 w-20 lg:h-8 h-9"
                   onChange={(e) => setPaper(e.currentTarget.value)}
                   value={paper}
                 />
@@ -191,14 +191,14 @@ const Materials = () => {
 
         {/* Wallet */}
         <div className="col-span-4 grid grid-cols-4 secondary-bg mb-2 py-3 px-3 rounded">
-          <p className="mb-1">Wallets</p>
+          <p className="mb-1 font-poppins">Wallets</p>
           <p className="mb-1 font-poppins font-bold">€{cards?.wallet.price}</p>
           <div className="col-span-2 flex gap-x-3">
             {editBtn === "wallet" ? (
               <>
                 <input
                   type="number"
-                  className="ps-3 text-black font-bold focus:outline-none rounded lg:w-28 w-20 lg:h-8 h-9"
+                  className="ps-3 text-black font-poppins font-bold focus:outline-none rounded lg:w-28 w-20 lg:h-8 h-9"
                   onChange={(e) => setWallet(e.currentTarget.value)}
                   value={wallet}
                 />

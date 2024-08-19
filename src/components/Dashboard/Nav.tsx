@@ -35,11 +35,11 @@ const Nav = () => {
 
   return (
     <>
-      <div className="lg:flex md:flex hidden justify-between border-b border-gray-700 pb-2">
+      <div className="lg:flex md:flex hidden justify-between border-b border-gray-700 py-3">
         <div className="relative">
           <div className="text-white">
-            <p className="font-bold">Welcome back Admin </p>
-            <p className="text-gray-400 mt-1 text-xs">
+            <p className="font-poppins text-xl">Welcome back Admin </p>
+            <p className="text-gray-400 mt-1 text-xs font-poppins">
               Manage your customers, ambassadors and website
             </p>
           </div>

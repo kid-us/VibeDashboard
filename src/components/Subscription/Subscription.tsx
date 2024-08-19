@@ -13,8 +13,6 @@ const Subscription = () => {
   const [pro, setPro] = useState<string | number>();
   const [proPlus, setProPlus] = useState<string | number>();
 
-  const [editBtn, setEditBtn] = useState<string>("");
-
   useEffect(() => {
     axios
       .get<Plan>(`${baseUrl}/api/v1/dashboard/subscription-plan`, {
@@ -36,10 +34,10 @@ const Subscription = () => {
     setProPlus(subscription ? subscription.proPlus.price : 0);
   }, [subscription]);
 
-  const handleChange = () => {
+  const handleChange = (edit: string) => {
     const data = {
-      plan: editBtn,
-      new_price: editBtn === "pro" ? pro : proPlus,
+      plan: edit,
+      new_price: edit === "pro" ? pro : proPlus,
     };
 
     axios
@@ -57,84 +55,55 @@ const Subscription = () => {
   };
 
   return (
-    <div className="bg2 rounded p-4">
-      <div className="">
-        <p className="text-gray-400 font-bold mb-5">Subscription Plans</p>
+    <div className="bg2 rounded-lg py-4 lg:px-4 px-2">
+      <div className="grid lg:grid-cols-3 grid-cols-4 text-white">
+        <p className="text-gray-400 text-sm mb-3 w-full font-poppins">Plan</p>
+        <p className="text-gray-400 text-sm mb-3 w-full font-poppins">Price</p>
+        <p className="text-gray-400 text-sm mb-3 w-full font-poppins">Edit</p>
 
-        <div className="grid grid-cols-4 text-white">
-          <p className="text-gray-400 text-sm mb-3 w-full">Plan</p>
-          <p className="text-gray-400 text-sm mb-3 w-full">Price</p>
-          <p className="text-gray-400 text-sm mb-3 w-full">Edit</p>
+        {/* Pro */}
+        <div className="lg:col-span-3 col-span-4 grid lg:grid-cols-3 grid-cols-4 secondary-bg mb-2 py-3 px-3 rounded">
+          <p className="font-poppins">Pro</p>
+          <p className="font-poppins font-bold">€{subscription?.pro.price}</p>
 
-          {/* Pro */}
-          <div className="col-span-4 grid grid-cols-4 secondary-bg mb-2 py-3 px-3 rounded">
-            <p className="">Pro</p>
-            <p className="font-poppins font-bold">€{subscription?.pro.price}</p>
-
-            <div className="cols-apn-2 flex gap-x-3">
-              {editBtn === "pro" ? (
-                <>
-                  <input
-                    type="number"
-                    className="ps-3 text-black font-bold focus:outline-none rounded lg:w-28 w-20 lg:h-8 h-9"
-                    onChange={(e) => setPro(e.currentTarget.value)}
-                    value={pro}
-                  />
-                  <button
-                    onClick={() => handleChange()}
-                    className="bi-check bg-green-500 h-8 rounded px-2 text-xl"
-                  ></button>
-
-                  <button
-                    onClick={() => setEditBtn("")}
-                    className="bi-x-lg text-red-400"
-                  ></button>
-                </>
-              ) : (
-                <button
-                  onClick={() => setEditBtn("pro")}
-                  className="bi-pen-fill text-blue-500"
-                ></button>
-              )}
-            </div>
+          <div className="flex gap-x-3">
+            <>
+              <input
+                type="number"
+                className="ps-3 text-black font-poppins font-bold focus:outline-none rounded w-28 lg:h-8 h-9"
+                onChange={(e) => setPro(e.currentTarget.value)}
+                value={pro}
+              />
+              <button
+                onClick={() => handleChange("pro")}
+                className="bi-check bg-green-500 lg:h-8 h-9 rounded px-2 text-xl"
+              ></button>
+            </>
           </div>
+        </div>
 
-          {/* Pro + */}
-          <div className="col-span-4 grid grid-cols-4 secondary-bg mb-2 py-3 px-3 rounded">
-            <p className="">Pro +</p>
-            <p className="font-poppins font-bold">
-              €{subscription?.proPlus.price}
-            </p>
-            <div className="col-span-2 flex gap-x-3">
-              {editBtn === "proPlus" ? (
-                <>
-                  <input
-                    type="number"
-                    className="ps-3 text-black font-bold focus:outline-none rounded lg:w-28 w-20 lg:h-8 h-9"
-                    onChange={(e) => setProPlus(e.currentTarget.value)}
-                    value={proPlus}
-                  />
-                  <button
-                    onClick={() => handleChange()}
-                    className="bi-check bg-green-500 h-8 rounded px-2 text-xl"
-                  ></button>
-
-                  <button
-                    onClick={() => setEditBtn("")}
-                    className="bi-x-lg text-red-400"
-                  ></button>
-                </>
-              ) : (
-                <button
-                  onClick={() => setEditBtn("proPlus")}
-                  className="bi-pen-fill text-blue-500"
-                ></button>
-              )}
-            </div>
+        {/* Pro + */}
+        <div className="lg:col-span-3 col-span-4 grid lg:grid-cols-3 grid-cols-4 secondary-bg mb-2 py-3 px-3 rounded">
+          <p className="font-poppins">Pro +</p>
+          <p className="font-poppins font-bold">
+            €{subscription?.proPlus.price}
+          </p>
+          <div className="flex gap-x-3">
+            <>
+              <input
+                type="number"
+                className="ps-3 font-poppins text-black font-bold focus:outline-none rounded w-28 lg:h-8 h-9"
+                onChange={(e) => setProPlus(e.currentTarget.value)}
+                value={proPlus}
+              />
+              <button
+                onClick={() => handleChange("proPlus")}
+                className="bi-check bg-green-500 lg:h-8 h-9 rounded px-2 text-xl"
+              ></button>
+            </>
           </div>
         </div>
       </div>
-      <div></div>
     </div>
   );
 };
