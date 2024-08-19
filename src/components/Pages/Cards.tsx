@@ -162,7 +162,7 @@ const Orders = () => {
           <Sidebar active="Cards" />
           {/* </div> */}
         </div>
-        <div className="lg:col-span-9 lg:px-2 md:px-2 px-1 py-2 md:col-span-10">
+        <div className="lg:col-span-9 lg:px-2 md:px-2 py-2 md:col-span-10">
           {/* Nav */}
           <Nav />
 
@@ -184,7 +184,7 @@ const Orders = () => {
                     />
                   </div>
                   {/* Delivery Data */}
-                  <div className="col-span-3 lg:grid grid-cols-2 lg:gap-x-10 lg:px-0 px-5 lg:mt-0 mt-5">
+                  <div className="col-span-3 grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 lg:gap-x-10 lg:px-0 px-5 lg:mt-0 mt-5">
                     {/* Card */}
                     <div>
                       <p className="lg:font-bold lg:text-xl text-white mb-5 font-poppins">
@@ -256,7 +256,7 @@ const Orders = () => {
                     <div>
                       {/* Delivery */}
                       <div className="text-white">
-                        <p className="lg:font-bold lg:text-xl sm:mt-7 lg:mt-0 md:mt-0 text-white mb-5 font-poppins">
+                        <p className="lg:font-bold lg:text-xl mt-5 lg:mt-0 md:mt-5 text-white mb-5 font-poppins">
                           Delivery Information
                         </p>
                         <div className="grid grid-cols-5">

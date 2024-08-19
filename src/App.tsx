@@ -15,42 +15,42 @@ function App() {
         <Route
           path="/"
           element={
-            // <Protected>
-            <Home />
-            // </Protected>
+            <Protected>
+              <Home />
+            </Protected>
           }
         />
         <Route path="/login" element={<Login />} />
         <Route
           path="/ambassadors"
           element={
-            // <Protected>
-            <Ambassadors />
-            // </Protected>
+            <Protected>
+              <Ambassadors />
+            </Protected>
           }
         />
         <Route
           path="/forms"
           element={
-            // <Protected>
-            <Forms />
-            // </Protected>
+            <Protected>
+              <Forms />
+            </Protected>
           }
         />
         <Route
           path="/cards"
           element={
-            // <Protected>
-            <Cards />
-            // </Protected>
+            <Protected>
+              <Cards />
+            </Protected>
           }
         />
         <Route
           path="/wallets"
           element={
-            // <Protected>
-            <Wallets />
-            // </Protected>
+            <Protected>
+              <Wallets />
+            </Protected>
           }
         />
       </Routes>

@@ -58,7 +58,9 @@ const Sidebar = ({ active }: Props) => {
               } block mb-5 lg:text-xl md:text-3xl p-2`}
             >
               <span className={`bi-input-cursor-text`}></span>
-              <span className={`lg:inline hidden lg:ms-5`}>Forms</span>
+              <span className={`lg:inline hidden lg:ms-5 font-poppins`}>
+                Forms
+              </span>
             </Link>
           )}
         </div>

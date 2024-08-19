@@ -55,7 +55,7 @@ const SmallNavbar = ({ active }: Props) => {
                   active === tab.title
                     ? "bg-teal-300 rounded text-black"
                     : "text-white"
-                } block mb-5 text-xl p-3`}
+                } block mb-5 text-xl p-3 font-poppins`}
               >
                 <span className={`${tab.icon} me-5`}></span>
                 {tab.title}
