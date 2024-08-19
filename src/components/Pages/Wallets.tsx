@@ -130,7 +130,8 @@ const Wallets = () => {
                         </>
                       ))}
                     </div>
-                    <button className="lg:hidden md:block hidden bg-green-500 w-full rounded font-poppins h-11 text-white shadow shadow-zinc-900">
+
+                    <button className="md:block lg:block hidden bg-green-500 w-full rounded font-poppins h-11 text-white shadow shadow-zinc-900">
                       Delivered
                     </button>
                   </div>

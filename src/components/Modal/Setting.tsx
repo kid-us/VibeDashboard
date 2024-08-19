@@ -104,7 +104,7 @@ const Setting = ({ onClose }: Props) => {
                   <p className="text-white block font-poppins text-lg">
                     Update your Credentials
                   </p>
-                  {!updateError && (
+                  {updateError && (
                     <p className="text-white bg-red-500 w-full rounded p-1 text-sm mt-4">
                       <span className="bi-exclamation-triangle-fill me-4"></span>
                       Something went wrong try again

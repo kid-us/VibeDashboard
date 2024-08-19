@@ -21,17 +21,17 @@ const Message = () => {
   };
   return (
     <>
-      <div className="fixed lg:w-[25%] w-[80%] z-50 top-14 right-0 bg-white rounded p-2 border">
+      <div className="fixed lg:w-[25%] main-bg w-[80%] z-50 top-14 right-0 bg rounded-lg border border-gray-700 p-2">
         {messages.length > 0 ? (
           <>
             {messages.map((m) => (
               <div
                 key={m.id}
-                className="bg-white shadow shadow-zinc-900 mb-4 rounded p-4"
+                className="secondary-bg shadow shadow-zinc-900 mb-4 rounded p-4"
               >
                 <div className="flex justify-between rounded ">
                   <div className="flex gap-x-4">
-                    <p className="font-bold text-sm font-poppins">
+                    <p className="font-bold text-sm font-poppins text-gray-400">
                       {m.username}
                     </p>
                   </div>
@@ -40,10 +40,10 @@ const Message = () => {
                     className="bi-trash-fill text-xl text-red-500"
                   ></button>
                 </div>
-                <p className="text-xs font-poppins font-poppins font-bold">
+                <p className="text-xs font-poppins font-poppins font-bold text-white">
                   {m.email}
                 </p>
-                <p className="text-sm italic my-2 font-poppins">
+                <p className="text-sm italic my-2 font-poppins text-white">
                   {" "}
                   <span className="bi-quote text-sm"></span> {m.message}
                 </p>

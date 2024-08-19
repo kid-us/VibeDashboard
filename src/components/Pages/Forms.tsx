@@ -140,7 +140,10 @@ const Forms = () => {
             <p className="text-white font-poppins">Admins</p>
             <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-x-4 mt-4">
               {admins.map((admin, index) => (
-                <div key={index} className="bg2 rounded p-5 py-6 lg:mb-0 mb-4">
+                <div
+                  key={index}
+                  className="secondary-bg rounded p-5 py-6 lg:mb-0 mb-4"
+                >
                   <p className="font-bold uppercase font-poppins">
                     Admin {index + 1}
                   </p>
@@ -199,7 +202,7 @@ const Forms = () => {
             <p className="text-white mt-5 mb-7 font-poppins">
               Create a new Admin Account
             </p>
-            <div className="p-8 bg2 rounded lg:w-[50%] w-full lg:px-20">
+            <div className="p-8 secondary-bg rounded lg:w-[50%] w-full lg:px-20">
               <>
                 <form onSubmit={handleSubmit(onSubmit)} className="relative">
                   {/* Login error */}

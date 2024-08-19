@@ -57,7 +57,7 @@ const ApprovedAmbassadors = () => {
         activeAmbassadors.map((active) => (
           <div
             key={active.uid}
-            className="grid lg:grid-cols-12 md:grid-cols-12 grid-cols-4 gap-x-5 lg:gap-y-0 md:gap-y-0 gap-y-5 hero-bg text-white lg:px-2 md:px-2 p-4 mt-1 rounded hover:border-l-4 border-blue-500 bg-gray-800 mb-2"
+            className="grid lg:grid-cols-12 md:grid-cols-12 grid-cols-4 gap-x-5 lg:gap-y-0 md:gap-y-0 gap-y-5 text-white lg:px-2 md:px-2 p-4 mt-1 rounded hover:border-l-4 border-blue-500 secondary-bg mb-2"
           >
             {/* First Name */}
             <div className="col-span-1 lg:col-span-1 md:col-span-1">

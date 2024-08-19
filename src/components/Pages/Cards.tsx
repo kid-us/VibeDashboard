@@ -174,7 +174,7 @@ const Orders = () => {
               orders.map((order) => (
                 <div
                   key={order.order_id}
-                  className="lg:grid grid-cols-5 bg-gray-800 mb-5 rounded py-6"
+                  className="lg:grid grid-cols-5 secondary-bg mb-5 rounded py-6"
                 >
                   <div className="col-span-2">
                     <img
