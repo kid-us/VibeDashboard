@@ -97,22 +97,23 @@ const Setting = ({ onClose }: Props) => {
                 <form onSubmit={handleSubmit(onSubmit)} className="relative">
                   <p
                     onClick={() => onClose()}
-                    className="bi-x absolute -top-10 text-xl lg:-right-16 right-0 text-white cursor-pointer"
+                    className="bi-x absolute -top-6 text-xl lg:-right-16 right-0 text-white cursor-pointer"
                   ></p>
 
                   {/* Login error */}
-                  {updateError && (
-                    <div className="relative">
-                      <p className="absolute -top-9 text-white bg-red-500 w-full rounded p-1 text-sm">
-                        <span className="bi-exclamation-triangle-fill me-4"></span>
-                        Something went wrong try again
-                      </p>
-                    </div>
+                  <p className="text-white block font-poppins text-lg">
+                    Update your Credentials
+                  </p>
+                  {!updateError && (
+                    <p className="text-white bg-red-500 w-full rounded p-1 text-sm mt-4">
+                      <span className="bi-exclamation-triangle-fill me-4"></span>
+                      Something went wrong try again
+                    </p>
                   )}
                   {/* Email */}
                   <div className="my-5">
                     <label
-                      className="text-sm text-gray-500 block"
+                      className="text-sm text-gray-400 block font-poppins"
                       htmlFor="email"
                     >
                       Email
@@ -121,10 +122,10 @@ const Setting = ({ onClose }: Props) => {
                       {...register("email")}
                       type="email"
                       name="email"
-                      className="text-black font-poppins text-sm w-full py-3 mt-2 bg-gray-100 rounded-lg focus:outline-none px-5 shadow shadow-gray-300"
+                      className="text-black font-poppins text-sm w-full py-3 mt-2 bg-gray-100 rounded focus:outline-none px-5 shadow shadow-gray-300"
                     />
                     {errors.email && (
-                      <p className="text-red-600 text-xs pt-1">
+                      <p className="bg-red-600 font-poppins text-xs mt-2 text-white p-1 rounded">
                         {errors.email.message}
                       </p>
                     )}
@@ -133,7 +134,7 @@ const Setting = ({ onClose }: Props) => {
                   {/* Password */}
                   <div className="mb-10 relative">
                     <label
-                      className="text-sm text-gray-500 block"
+                      className="text-sm text-gray-400 block font-poppins"
                       htmlFor="password"
                     >
                       Password
@@ -143,7 +144,7 @@ const Setting = ({ onClose }: Props) => {
                       {...register("password")}
                       type={passwordType ? "password" : "text"}
                       name="password"
-                      className="text-black font-poppins text-sm w-full py-3 mt-2 bg-gray-100 rounded-lg focus:outline-none px-5 shadow shadow-gray-300"
+                      className="text-black font-poppins text-sm w-full py-3 mt-2 bg-gray-100 rounded focus:outline-none px-5 shadow shadow-gray-300"
                     />
                     <span
                       onClick={() => {
@@ -155,14 +156,14 @@ const Setting = ({ onClose }: Props) => {
                       } right-2 top-9 cursor-pointer text-black px-2 text-lg border-l border-gray-500`}
                     ></span>
                     {errors.password && (
-                      <p className="text-red-600 text-xs pt-1">
+                      <p className="bg-red-600 font-poppins text-xs mt-2 text-white p-1 rounded">
                         {errors.password.message}
                       </p>
                     )}
                   </div>
 
                   {/* Button */}
-                  <Button loader={loader} label="Login" />
+                  <Button loader={loader} label="Update" />
                 </form>
               </>
             ) : (

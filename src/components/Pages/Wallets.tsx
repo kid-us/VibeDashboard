@@ -102,7 +102,7 @@ const Wallets = () => {
               wallets.map((order) => (
                 <div
                   key={order.order_id}
-                  className="grid lg:grid-cols-5 md:grid-cols-5 grid-cols-1 bg-gray-800 mb-5 rounded lg:p-6 gap-x-10"
+                  className="grid lg:grid-cols-5 md:grid-cols-5 grid-cols-1 secondary-bg shadow shadow-zinc-800 mb-5 rounded lg:p-6 gap-x-10"
                 >
                   {/* Delivery Data */}
                   <div className="lg:col-span-2 md:col-span-2 col-span-5 lg:p-2 p-5">
