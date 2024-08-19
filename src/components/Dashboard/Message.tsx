@@ -31,17 +31,19 @@ const Message = () => {
               >
                 <div className="flex justify-between rounded ">
                   <div className="flex gap-x-4">
-                    <p className="font-bold text-sm">{m.username}</p>
+                    <p className="font-bold text-sm font-poppins">
+                      {m.username}
+                    </p>
                   </div>
                   <button
                     onClick={() => handleDelete(m.id)}
                     className="bi-trash-fill text-xl text-red-500"
                   ></button>
                 </div>
-                <p className="text-xs uppercase font-poppins font-bold">
+                <p className="text-xs font-poppins font-poppins font-bold">
                   {m.email}
                 </p>
-                <p className="text-sm italic my-2">
+                <p className="text-sm italic my-2 font-poppins">
                   {" "}
                   <span className="bi-quote text-sm"></span> {m.message}
                 </p>
