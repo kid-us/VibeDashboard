@@ -112,7 +112,7 @@ const Wallets = () => {
                         Ordered Date: {getDate(order.created_at)}
                       </p>
                       {order.wallets.map((wal) => (
-                        <>
+                        <div key={wal.wallet_id}>
                           <img
                             key={wal.wallet_id}
                             src={getWalletImg(wal.wallet_id)}
@@ -127,10 +127,10 @@ const Wallets = () => {
                               Quantity : {wal.quantity}
                             </p>
                           </div>
-                        </>
+                        </div>
                       ))}
                     </div>
-
+                    {/* Button */}
                     <button className="md:block lg:block hidden bg-green-500 w-full rounded font-poppins h-11 text-white shadow shadow-zinc-900">
                       Delivered
                     </button>

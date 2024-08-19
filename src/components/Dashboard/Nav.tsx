@@ -38,7 +38,7 @@ const Nav = () => {
       <div className="lg:flex md:flex hidden justify-between border-b border-gray-700 py-3">
         <div className="relative">
           <div className="text-white">
-            <p className="font-poppins text-xl">Welcome back Admin </p>
+            <p className="font-poppins text-xl">Welcome back admin </p>
             <p className="text-gray-400 mt-1 text-xs font-poppins">
               Manage your customers, ambassadors and website
             </p>

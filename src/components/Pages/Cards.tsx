@@ -193,11 +193,8 @@ const Orders = () => {
           <div className="px-2 mt-5">
             {orders.length > 0 ? (
               orders.map((order) => (
-                <>
-                  <div
-                    key={order.order_id}
-                    className="lg:grid grid-cols-5 secondary-bg mb-5 rounded py-6"
-                  >
+                <div key={order.order_id}>
+                  <div className="lg:grid grid-cols-5 secondary-bg mb-5 rounded py-6">
                     <div className="col-span-2">
                       <img
                         src={order.card_img}
@@ -400,7 +397,7 @@ const Orders = () => {
                       </div>
                     </div>
                   )}
-                </>
+                </div>
               ))
             ) : (
               <p className="w-full bg-white text-center py-3 text-sm font-poppins">
