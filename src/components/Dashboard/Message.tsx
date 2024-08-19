@@ -21,7 +21,7 @@ const Message = () => {
   };
   return (
     <>
-      <div className="fixed lg:w-[25%] main-bg w-[80%] z-50 top-14 right-0 bg rounded-lg border border-gray-700 p-2">
+      <div className="fixed lg:w-[25%] main-bg w-[99%] z-50 top-14 right-0 bg rounded-lg border border-gray-700 p-2">
         {messages.length > 0 ? (
           <>
             {messages.map((m) => (
@@ -51,7 +51,7 @@ const Message = () => {
             ))}
           </>
         ) : (
-          <p className="my-1 text-black font-poppins">
+          <p className="my-1 text-white font-poppins">
             There is no message to view!
           </p>
         )}
