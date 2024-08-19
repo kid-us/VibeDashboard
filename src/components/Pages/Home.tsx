@@ -67,7 +67,7 @@ const Home = () => {
           <Nav />
 
           <p className="text-white font-poppins text-lg mt-2">Analytics</p>
-          <div className="grid lg:grid-cols-3 md:grid-cols-3 mt-5 gap-x-6">
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 mt-5 gap-x-6">
             {/* Total Users */}
             <div className="bg2 w-full p-4 rounded-lg shadow shadow-zinc-700 lg:mb-0 mb-5 ps-6">
               <p className="font-poppins text-gray-400">Total User</p>
@@ -154,7 +154,7 @@ const Home = () => {
 
           <div className="grid lg:grid-cols-2 lg:mt-7 mt-4 gap-x-5">
             {/* Subscription */}
-            <div>
+            <div className="md:mb-4">
               <p className="text-white font-poppins mb-5">Subscription Plans</p>
               <Subscription />
             </div>

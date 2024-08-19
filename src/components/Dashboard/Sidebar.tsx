@@ -26,7 +26,9 @@ const Sidebar = ({ active }: Props) => {
         <Link to="/">
           <h1 className="text-white lg:text-4xl md:text-2xl md:text-center lg:text-start lg:ms-3 logo-font ">
             <span className="md:hidden lg:block  logo-font">vibecard</span>
-            <span className="lg:hidden md:block hidden text-5xl">v</span>
+            <span className="lg:hidden md:block hidden text-5xl logo-font">
+              v
+            </span>
           </h1>
         </Link>
         <div className="mt-10 md:text-center lg:text-start lg:ms-3">

@@ -256,7 +256,7 @@ const Orders = () => {
                     <div>
                       {/* Delivery */}
                       <div className="text-white">
-                        <p className="lg:font-bold lg:text-xl mt-7 text-white mb-5 font-poppins">
+                        <p className="lg:font-bold lg:text-xl sm:mt-7 lg:mt-0 md:mt-0 text-white mb-5 font-poppins">
                           Delivery Information
                         </p>
                         <div className="grid grid-cols-5">
@@ -327,7 +327,7 @@ const Orders = () => {
 
                       {/* Buttons */}
                       <div className="mt-4">
-                        <button className="bg-green-500 font-poppins w-[90%] rounded h-12 text-white shadow shadow-zinc-950">
+                        <button className="bg-green-500 font-poppins lg:w-[90%] w-full rounded h-12 text-white shadow shadow-zinc-950">
                           Delivered
                         </button>
                       </div>

@@ -97,103 +97,117 @@ const Wallets = () => {
           {/* Contents */}
           <h1 className="text-white text-xl my-3 ms-1">Wallets</h1>
 
-          <div className="lg:grid grid-cols-2 gap-x-5 px-2 mt-5">
+          <div className="lg:grid grid-cols-2 gap-x-5 mt-5">
             {wallets.length > 0 ? (
               wallets.map((order) => (
                 <div
                   key={order.order_id}
-                  className="lg:grid grid-cols-5 bg-gray-800 mb-5 rounded py-6 gap-x-10"
+                  className="grid lg:grid-cols-5 md:grid-cols-5 grid-cols-1 bg-gray-800 mb-5 rounded lg:p-6 gap-x-10"
                 >
                   {/* Delivery Data */}
-                  <div className="col-span-2 lg:p-2 p-5">
+                  <div className="lg:col-span-2 md:col-span-2 col-span-5 lg:p-2 p-5">
                     {/* Wallet */}
-                    <div className="">
+                    <div>
+                      <p className="font-poppins lg:text-xs text-sm text-white mb-4">
+                        Ordered Date: {getDate(order.created_at)}
+                      </p>
                       {order.wallets.map((wal) => (
-                        <img
-                          key={wal.wallet_id}
-                          src={getWalletImg(wal.wallet_id)}
-                          alt="wallet"
-                          className="rounded"
-                        />
+                        <>
+                          <img
+                            key={wal.wallet_id}
+                            src={getWalletImg(wal.wallet_id)}
+                            alt="wallet"
+                            className="rounded mb-1 w-full"
+                          />
+                          <div className="text-white mb-3">
+                            <p
+                              className="font-poppins text-sm"
+                              key={wal.wallet_id}
+                            >
+                              Quantity : {wal.quantity}
+                            </p>
+                          </div>
+                        </>
                       ))}
-                      <div className="text-white mt-5">
-                        <p>Ordered Date: {getDate(order.created_at)}</p>
-                        {order.wallets.map((w) => (
-                          <p key={w.wallet_id}>Quantity : {w.quantity}</p>
-                        ))}
-                      </div>
                     </div>
+                    <button className="lg:hidden md:block hidden bg-green-500 w-full rounded font-poppins h-11 text-white shadow shadow-zinc-900">
+                      Delivered
+                    </button>
                   </div>
+
                   {/* Delivery */}
-                  <div className="col-span-3 lg:p-0 px-5">
+                  <div className="lg:col-span-3 md:col-span-3 col-span-5 lg:p-0 px-5">
                     <div className="text-white">
-                      <p className="lg:font-bold lg:text-xl text-xs text-white mb-2">
+                      <p className="font-poppins lg:text-lg text-white mb-2 md:mt-5 lg:mt-0">
                         Delivery Information
                       </p>
-                      <div className="grid grid-cols-5">
-                        <p className="mb-2 col-span-2 font-poppins text-gray-400 font-bold text-sm">
+                      <div className="grid grid-cols-5 mt-4">
+                        <p className="mb-2 col-span-2 font-poppins text-gray-400 text-sm">
                           First Name
                         </p>
-                        <p className="col-span-3 uppercase text-sm">
+                        <p className="col-span-3 font-bold font-poppins text-sm">
                           {order.order_metadata.fname}
                         </p>
 
-                        <p className="mb-2 col-span-2 font-poppins text-gray-400 font-bold text-sm">
+                        <p className="mb-2 col-span-2 font-poppins text-gray-400 text-sm">
                           Last Name
                         </p>
-                        <p className="col-span-3 uppercase font-poppins text-sm">
+                        <p className="col-span-3 font-bold font-poppins text-sm">
                           {order.order_metadata.lname}
                         </p>
 
-                        <p className="mb-2 col-span-2 font-poppins text-gray-400 font-bold text-sm">
+                        <p className="mb-2 col-span-2 font-poppins text-gray-400 text-sm">
                           Email
                         </p>
-                        <p className="col-span-3 uppercase font-poppins text-sm">
+                        <p className="col-span-3 font-bold font-poppins text-sm">
                           {order.order_metadata.email}
                         </p>
 
-                        <p className="mb-2 col-span-2 font-poppins text-gray-400 font-bold text-sm">
+                        <p className="mb-2 col-span-2 font-poppins text-gray-400 text-sm">
                           Location
                         </p>
-                        <p className="col-span-3 uppercase font-poppins text-sm">
+                        <p className="col-span-3 font-bold font-poppins text-sm">
                           {order.order_metadata.location}
                         </p>
 
-                        <p className="mb-2 col-span-2 font-poppins text-gray-400 font-bold text-sm">
+                        <p className="mb-2 col-span-2 font-poppins text-gray-400 text-sm">
                           Phone
                         </p>
-                        <p className="col-span-3 uppercase font-poppins text-sm">
+                        <p className="col-span-3 font-bold font-poppins text-sm">
                           {order.order_metadata.phone}
                         </p>
 
-                        <p className="mb-2 col-span-2 font-poppins text-gray-400 font-bold text-sm">
+                        <p className="mb-2 col-span-2 font-poppins text-gray-400 text-sm">
                           Street
                         </p>
-                        <p className="col-span-3 uppercase font-poppins text-sm">
+                        <p className="col-span-3 font-bold font-poppins text-sm">
                           {order.order_metadata.street}
                         </p>
 
-                        <p className="mb-2 col-span-2 font-poppins text-gray-400 font-bold text-sm">
+                        <p className="mb-2 col-span-2 font-poppins text-gray-400 text-sm">
                           Street No
                         </p>
-                        <p className="col-span-3 uppercase font-poppins text-sm">
+                        <p className="col-span-3 font-bold font-poppins text-sm">
                           {order.order_metadata.street_no}
                         </p>
 
-                        <p className="mb-2 col-span-2 font-poppins text-gray-400 font-bold text-sm">
+                        <p className="mb-2 col-span-2 font-poppins text-gray-400 text-sm">
                           Address
                         </p>
-                        <p className="col-span-3 uppercase font-poppins text-sm">
+                        <p className="col-span-3 font-bold font-poppins text-sm">
                           {order.order_metadata.address}
                         </p>
 
-                        <p className="mb-2 col-span-2 font-poppins text-gray-400">
+                        <p className="mb-2 col-span-2 font-poppins text-gray-400 text-sm">
                           PLZ
                         </p>
-                        <p className="col-span-3 uppercase font-poppins text-sm">
+                        <p className="col-span-3 font-bold font-poppins text-sm">
                           {order.order_metadata.plz}
                         </p>
                       </div>
+                      <button className="md:hidden lg:hidden bg-green-500 w-full rounded font-poppins h-11 text-white shadow shadow-zinc-900 mb-3 mt-2">
+                        Delivered
+                      </button>
                     </div>
                   </div>
                 </div>
