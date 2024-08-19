@@ -9,6 +9,7 @@ import Subscription from "../Subscription/Subscription";
 import Materials from "../Materials/Materials";
 import useDocumentTitle from "@/hook/useDocumentTitle";
 import Loading from "../Loading/Loading";
+import Wallets from "../Wallet/Wallets";
 
 interface Subscription {
   free: number;
@@ -37,7 +38,6 @@ const Home = () => {
       .get<General>(`${baseUrl}/api/v1/dashboard/general`, {
         headers: {
           "Content-Type": "application/json",
-          "ngrok-skip-browser-warning": "69420",
         },
       })
       .then((response) => {
@@ -72,7 +72,7 @@ const Home = () => {
             <div className="bg2 w-full p-4 rounded-lg shadow shadow-zinc-700 lg:mb-0 mb-5 ps-6">
               <p className="font-poppins text-gray-400">Total User</p>
               <div className="flex justify-between mt-4">
-                <p className="text-3xl mt-1 font-poppins text-white">
+                <p className="text-4xl font-bold mt-1 font-poppins text-white">
                   {general?.number_of_total_users}
                 </p>
                 <p className="font-poppins bi-person-fill text-5xl text-teal-500 me-4"></p>
@@ -85,7 +85,7 @@ const Home = () => {
                 Total Generated Cards
               </p>
               <div className="flex justify-between mt-4">
-                <p className="text-3xl mt-1 font-poppins text-white">
+                <p className="text-4xl font-bold mt-1 font-poppins text-white">
                   {general?.number_of_cards}
                 </p>
                 <p className="bi-credit-card-2-front-fill text-5xl mt-1 text-teal-500 me-4"></p>
@@ -98,7 +98,7 @@ const Home = () => {
                 Total Approved Ambassadors
               </p>
               <div className="flex justify-between mt-4">
-                <p className="text-3xl mt-1 font-poppins text-white">
+                <p className="text-4xl mt-1 font-bold font-poppins text-white">
                   {activeAmbassadors.length}
                 </p>
                 <p className="bi-person-heart text-5xl mt-1 text-teal-500 me-4"></p>
@@ -111,7 +111,7 @@ const Home = () => {
                 Total Pending Ambassadors
               </p>
               <div className="flex justify-between mt-4">
-                <p className="text-3xl mt-1 font-poppins text-white">
+                <p className="text-4xl mt-1 font-bold text-white">
                   {pendingAmbassadors.length}
                 </p>
                 <p className="bi-person-heart text-5xl mt-1 text-teal-500 me-4"></p>
@@ -122,7 +122,7 @@ const Home = () => {
             <div className="bg2 w-full p-5 rounded-lg shadow shadow-zinc-700 lg:mb-0 mb-5 lg:mt-5">
               <p className="font-poppins text-gray-400">Free Subscribers</p>
               <div className="flex justify-between mt-4">
-                <p className="text-3xl mt-1 font-poppins text-white">
+                <p className="text-4xl mt-1 font-bold font-poppins text-white">
                   {general?.subscription_info.free}
                 </p>
                 <p className="bi-person text-5xl mt-1 text-teal-500 me-4"></p>
@@ -133,7 +133,7 @@ const Home = () => {
             <div className="bg2 w-full p-5 rounded-lg shadow shadow-zinc-700 lg:mb-0 mb-5 lg:mt-5">
               <p className="font-poppins text-gray-400">Pro Subscribers</p>
               <div className="flex justify-between mt-4">
-                <p className="text-3xl mt-1 font-poppins text-white">
+                <p className="text-4xl font-bold mt-1 font-poppins text-white">
                   {general?.subscription_info.pro}
                 </p>
                 <p className="bi-person text-5xl mt-1 text-teal-500 me-4"></p>
@@ -144,7 +144,7 @@ const Home = () => {
             <div className="bg2 w-full p-5 rounded-lg shadow shadow-zinc-700 lg:mb-0 mb-5 lg:mt-5">
               <p className="font-poppins text-gray-400">Pro + Subscribers</p>
               <div className="flex justify-between mt-4">
-                <p className="text-3xl mt-1 font-poppins text-white">
+                <p className="text-4xl mt-1 font-bold font-poppins text-white">
                   {general?.subscription_info.proPlus}
                 </p>
                 <p className="bi-person text-5xl mt-1 text-teal-500 me-4"></p>
@@ -157,7 +157,11 @@ const Home = () => {
             <div className="md:mb-4">
               <p className="text-white font-poppins mb-5">Subscription Plans</p>
               <Subscription />
+
+              <p className="text-white font-poppins my-5">Wallets</p>
+              <Wallets />
             </div>
+
             {/* Materials */}
             <div>
               <p className="text-white font-poppins mb-5">Products</p>

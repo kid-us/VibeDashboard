@@ -2,7 +2,7 @@ import { baseUrl } from "@/services/request";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-interface Plan {
+export interface Plan {
   metal: {
     price: number;
     material: string;
@@ -143,7 +143,7 @@ const Materials = () => {
         </div>
 
         {/* Wallet */}
-        <div className="col-span-4 lg:col-span-3 grid lg:grid-cols-3 grid-cols-4 secondary-bg mb-2 py-3 px-3 rounded-lg">
+        {/* <div className="col-span-4 lg:col-span-3 grid lg:grid-cols-3 grid-cols-4 secondary-bg mb-2 py-3 px-3 rounded-lg">
           <p className="mb-1 font-poppins">Wallets</p>
           <p className="mb-1 font-poppins font-bold">€{cards?.wallet.price}</p>
           <div className="lg:col-span-1 col-span-2 flex gap-x-3">
@@ -158,7 +158,7 @@ const Materials = () => {
               className="bi-check bg-green-500 h-8 rounded px-2 text-xl"
             ></button>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

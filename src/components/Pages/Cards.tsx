@@ -162,7 +162,7 @@ const Orders = () => {
           <Sidebar active="Cards" />
           {/* </div> */}
         </div>
-        <div className="lg:col-span-9 lg:px-2 md:px-2 py-2 md:col-span-10">
+        <div className="lg:col-span-9 lg:px-4 md:px-2 px-2 py-2 md:col-span-10">
           {/* Nav */}
           <Nav />
 
