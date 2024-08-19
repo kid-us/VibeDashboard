@@ -15,6 +15,10 @@ interface Plan {
     price: number;
     material: string;
   };
+  wallet: {
+    price: number;
+    material: string;
+  };
 }
 
 const Materials = () => {
@@ -23,6 +27,7 @@ const Materials = () => {
   const [metal, setMetal] = useState<string | number>();
   const [bamboo, setBamboo] = useState<string | number>();
   const [paper, setPaper] = useState<string | number>();
+  const [wallet, setWallet] = useState<string | number>();
 
   const [editBtn, setEditBtn] = useState<string>("");
 
@@ -31,6 +36,7 @@ const Materials = () => {
       .get<Plan>(`${baseUrl}/api/v1/dashboard/card-material-pricing`, {
         headers: {
           "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "69420",
         },
       })
       .then((response) => {
@@ -45,13 +51,20 @@ const Materials = () => {
     setMetal(cards ? cards.metal.price : 0);
     setBamboo(cards ? cards.bamboo.price : 0);
     setPaper(cards ? cards.recycled_paper.price : 0);
+    setWallet(cards ? cards.wallet.price : 0);
   }, [cards]);
 
   const handleChange = () => {
     const data = {
       material: editBtn,
       new_price:
-        editBtn === "metal" ? metal : editBtn === "bamboo" ? bamboo : paper,
+        editBtn === "metal"
+          ? metal
+          : editBtn === "bamboo"
+          ? bamboo
+          : editBtn === "recycled_paper"
+          ? paper
+          : wallet,
     };
 
     axios
@@ -80,7 +93,7 @@ const Materials = () => {
         {/* Metal */}
         <div className="col-span-4 grid grid-cols-4 secondary-bg mb-2 py-3 px-3 rounded">
           <p className="">Metal</p>
-          <p className="">€{cards?.metal.price}</p>
+          <p className="font-poppins font-bold">€{cards?.metal.price}</p>
 
           <div className="col-span-2 flex gap-x-3">
             {editBtn === "metal" ? (
@@ -113,7 +126,7 @@ const Materials = () => {
         {/* Bamboo */}
         <div className="col-span-4 grid grid-cols-4 secondary-bg mb-2 py-3 px-3 rounded">
           <p className="">Bamboo</p>
-          <p className="">€{cards?.bamboo.price}</p>
+          <p className="font-poppins font-bold">€{cards?.bamboo.price}</p>
           <div className="col-span-2 flex gap-x-3">
             {editBtn === "bamboo" ? (
               <>
@@ -145,7 +158,9 @@ const Materials = () => {
         {/* Recycled */}
         <div className="col-span-4 grid grid-cols-4 secondary-bg mb-2 py-3 px-3 rounded">
           <p className="mb-1">Recycled Paper</p>
-          <p className="mb-1">€{cards?.recycled_paper.price}</p>
+          <p className="mb-1 font-poppins font-bold">
+            €{cards?.recycled_paper.price}
+          </p>
           <div className="col-span-2 flex gap-x-3">
             {editBtn === "recycled_paper" ? (
               <>
@@ -168,6 +183,38 @@ const Materials = () => {
             ) : (
               <button
                 onClick={() => setEditBtn("recycled_paper")}
+                className="bi-pen-fill text-blue-500"
+              ></button>
+            )}
+          </div>
+        </div>
+
+        {/* Wallet */}
+        <div className="col-span-4 grid grid-cols-4 secondary-bg mb-2 py-3 px-3 rounded">
+          <p className="mb-1">Wallets</p>
+          <p className="mb-1 font-poppins font-bold">€{cards?.wallet.price}</p>
+          <div className="col-span-2 flex gap-x-3">
+            {editBtn === "wallet" ? (
+              <>
+                <input
+                  type="number"
+                  className="ps-3 text-black font-bold focus:outline-none rounded lg:w-28 w-20 lg:h-8 h-9"
+                  onChange={(e) => setWallet(e.currentTarget.value)}
+                  value={wallet}
+                />
+                <button
+                  onClick={() => handleChange()}
+                  className="bi-check bg-green-500 h-8 rounded px-2 text-xl"
+                ></button>
+
+                <button
+                  onClick={() => setEditBtn("")}
+                  className="bi-x-lg text-red-400"
+                ></button>
+              </>
+            ) : (
+              <button
+                onClick={() => setEditBtn("wallet")}
                 className="bi-pen-fill text-blue-500"
               ></button>
             )}

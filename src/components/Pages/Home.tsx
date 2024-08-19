@@ -38,6 +38,7 @@ const Home = () => {
       .get<General>(`${baseUrl}/api/v1/dashboard/general`, {
         headers: {
           "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "69420",
         },
       })
       .then((response) => {

@@ -20,6 +20,7 @@ const Subscription = () => {
       .get<Plan>(`${baseUrl}/api/v1/dashboard/subscription-plan`, {
         headers: {
           "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "69420",
         },
       })
       .then((response) => {
@@ -68,7 +69,7 @@ const Subscription = () => {
           {/* Pro */}
           <div className="col-span-4 grid grid-cols-4 secondary-bg mb-2 py-3 px-3 rounded">
             <p className="">Pro</p>
-            <p className="">€{subscription?.pro.price}</p>
+            <p className="font-poppins font-bold">€{subscription?.pro.price}</p>
 
             <div className="cols-apn-2 flex gap-x-3">
               {editBtn === "pro" ? (
@@ -101,9 +102,11 @@ const Subscription = () => {
           {/* Pro + */}
           <div className="col-span-4 grid grid-cols-4 secondary-bg mb-2 py-3 px-3 rounded">
             <p className="">Pro +</p>
-            <p className="">€{subscription?.proPlus.price}</p>
+            <p className="font-poppins font-bold">
+              €{subscription?.proPlus.price}
+            </p>
             <div className="col-span-2 flex gap-x-3">
-              {editBtn === "pro+" ? (
+              {editBtn === "proPlus" ? (
                 <>
                   <input
                     type="number"
@@ -123,7 +126,7 @@ const Subscription = () => {
                 </>
               ) : (
                 <button
-                  onClick={() => setEditBtn("pro+")}
+                  onClick={() => setEditBtn("proPlus")}
                   className="bi-pen-fill text-blue-500"
                 ></button>
               )}

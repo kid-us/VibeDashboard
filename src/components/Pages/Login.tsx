@@ -66,22 +66,23 @@ const Login = () => {
       <div className="lg:px-40 md:px-36 px-2 h-[100vh]">
         <div className="flex justify-center w-full h-full items-center">
           <div className="lg:w-[40%] w-full">
-            <div className="lg:p-10 md:p-9 p-8 shadow-lg secondary-bg rounded-lg text-white border border-violet-800 mb-3">
+            <div className="lg:p-10 md:p-9 p-8 secondary-bg rounded-lg text-white mb-3 shadow shadow-zinc-800">
+              <p className="text-2xl font-poppins mb-4">
+                <span className="logo-font">vibecard</span> admin
+              </p>
               {/* Form */}
               <form onSubmit={handleSubmit(onSubmit)}>
                 {/* Login error */}
                 {loginError !== "" && (
-                  <div className="relative">
-                    <p className="absolute -top-8 text-red-600">
-                      <span className="bi-exclamation-triangle-fill me-4"></span>
-                      {loginError}
-                    </p>
-                  </div>
+                  <p className="bg-red-600 rounded text-sm w-full p-1 font-poppins my-4">
+                    <span className="bi-exclamation-triangle-fill me-4"></span>
+                    {loginError}
+                  </p>
                 )}
                 {/* Email */}
                 <div className="mb-5">
                   <label
-                    className="text-sm text-gray-500 block"
+                    className="text-sm text-gray-500 block font-poppins"
                     htmlFor="email"
                   >
                     Email
@@ -90,10 +91,10 @@ const Login = () => {
                     {...register("email")}
                     type="email"
                     name="email"
-                    className="text-black font-poppins text-sm w-full py-3 mt-2 bg-gray-100 rounded-lg focus:outline-none px-5 shadow shadow-gray-300"
+                    className="text-black font-poppins text-sm w-full py-3 mt-2 bg-gray-100 rounded focus:outline-none px-5 shadow shadow-gray-300 font-poppins"
                   />
                   {errors.email && (
-                    <p className="text-red-600 text-xs pt-1">
+                    <p className="bg-red-600 text-xs mt-1 ps-3 rounded py-1 font-poppins">
                       {errors.email.message}
                     </p>
                   )}
@@ -102,7 +103,7 @@ const Login = () => {
                 {/* Password */}
                 <div className="mb-10 relative">
                   <label
-                    className="text-sm text-gray-500 block"
+                    className="text-sm text-gray-500 block font-poppins"
                     htmlFor="password"
                   >
                     Password
@@ -112,7 +113,7 @@ const Login = () => {
                     {...register("password")}
                     type={passwordType ? "password" : "text"}
                     name="password"
-                    className="text-black font-poppins text-sm w-full py-3 mt-2 bg-gray-100 rounded-lg focus:outline-none px-5 shadow shadow-gray-300"
+                    className="text-black font-poppins text-sm w-full py-3 mt-2 bg-gray-100 rounded focus:outline-none px-5 shadow shadow-gray-300"
                   />
                   <span
                     onClick={() => {
@@ -124,7 +125,7 @@ const Login = () => {
                     } right-2 top-9 cursor-pointer text-black px-2 text-lg border-l border-gray-500`}
                   ></span>
                   {errors.password && (
-                    <p className="text-red-600 text-xs pt-1">
+                    <p className="bg-red-600 text-xs mt-1 ps-3 rounded py-1 font-poppins">
                       {errors.password.message}
                     </p>
                   )}
