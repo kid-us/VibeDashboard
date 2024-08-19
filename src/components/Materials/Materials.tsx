@@ -29,8 +29,6 @@ const Materials = () => {
   const [paper, setPaper] = useState<string | number>();
   const [wallet, setWallet] = useState<string | number>();
 
-  const [editBtn, setEditBtn] = useState<string>("");
-
   useEffect(() => {
     axios
       .get<Plan>(`${baseUrl}/api/v1/dashboard/card-material-pricing`, {
@@ -54,15 +52,15 @@ const Materials = () => {
     setWallet(cards ? cards.wallet.price : 0);
   }, [cards]);
 
-  const handleChange = () => {
+  const handleChange = (edit: string) => {
     const data = {
-      material: editBtn,
+      material: edit,
       new_price:
-        editBtn === "metal"
+        edit === "metal"
           ? metal
-          : editBtn === "bamboo"
+          : edit === "bamboo"
           ? bamboo
-          : editBtn === "recycled_paper"
+          : edit === "recycled_paper"
           ? paper
           : wallet,
     };
@@ -82,142 +80,83 @@ const Materials = () => {
   };
 
   return (
-    <div className="bg2 rounded p-4">
-      <p className="text-gray-300 font-poppins font-bold mb-5">Cards</p>
-
-      <div className="grid grid-cols-4 text-white">
-        <p className="text-gray-400 text-sm mb-3 font-poppins">Type</p>
-        <p className="text-gray-400 text-sm mb-3 font-poppins">Price</p>
-        <p className="text-gray-400 text-sm mb-3 font-poppins">Edit</p>
+    <div className="bg2 rounded-lg lg:p-4 p-2">
+      <div className="grid lg:grid-cols-3 grid-cols-4 text-white">
+        <p className="text-gray-400 text-sm mb-5 font-poppins">Type</p>
+        <p className="text-gray-400 text-sm mb-5 font-poppins">Price</p>
+        <p className="text-gray-400 text-sm mb-5 font-poppins">Edit</p>
 
         {/* Metal */}
-        <div className="col-span-4 grid grid-cols-4 secondary-bg mb-2 py-3 px-3 rounded">
+        <div className="col-span-4 lg:col-span-3 grid lg:grid-cols-3 grid-cols-4 secondary-bg mb-2 py-3 px-2 rounded-lg">
           <p className="font-poppins">Metal</p>
-          <p className="font-poppins font-bold">€{cards?.metal.price}</p>
-
-          <div className="col-span-2 flex gap-x-3">
-            {editBtn === "metal" ? (
-              <>
-                <input
-                  type="number"
-                  className="ps-3 text-black font-bold font-poppins focus:outline-none rounded lg:w-28 w-20 lg:h-8 h-9"
-                  onChange={(e) => setMetal(e.currentTarget.value)}
-                  value={metal}
-                />
-                <button
-                  onClick={() => handleChange()}
-                  className="bi-check bg-green-500 h-8 rounded px-2 text-xl"
-                ></button>
-
-                <button
-                  onClick={() => setEditBtn("")}
-                  className="bi-x-lg text-red-400"
-                ></button>
-              </>
-            ) : (
+          <p className="font-poppins">€{cards?.metal.price}</p>
+          <div className="lg:col-span-1 col-span-2 flex gap-x-2">
+            <>
+              <input
+                type="number"
+                className="ps-3 text-black font-bold font-poppins focus:outline-none rounded w-28 lg:h-8 h-9"
+                onChange={(e) => setMetal(e.currentTarget.value)}
+                value={metal}
+              />
               <button
-                onClick={() => setEditBtn("metal")}
-                className="bi-pen-fill text-blue-500"
+                onClick={() => handleChange("metal")}
+                className="bi-check bg-green-500 lg:h-8 h-9 rounded px-2 text-xl"
               ></button>
-            )}
+            </>
           </div>
         </div>
 
         {/* Bamboo */}
-        <div className="col-span-4 grid grid-cols-4 secondary-bg mb-2 py-3 px-3 rounded">
+        <div className="col-span-4 lg:col-span-3 grid lg:grid-cols-3 grid-cols-4 secondary-bg mb-2 py-3 px-2 rounded-lg">
           <p className="font-poppins">Bamboo</p>
-          <p className="font-poppins font-bold">€{cards?.bamboo.price}</p>
-          <div className="col-span-2 flex gap-x-3">
-            {editBtn === "bamboo" ? (
-              <>
-                <input
-                  type="number"
-                  className="ps-3 text-black font-poppins font-bold focus:outline-none rounded lg:w-28 w-20 lg:h-8 h-9"
-                  onChange={(e) => setBamboo(e.currentTarget.value)}
-                  value={bamboo}
-                />
-                <button
-                  onClick={() => handleChange()}
-                  className="bi-check bg-green-500 h-8 rounded px-2 text-xl"
-                ></button>
-
-                <button
-                  onClick={() => setEditBtn("")}
-                  className="bi-x-lg text-red-400"
-                ></button>
-              </>
-            ) : (
-              <button
-                onClick={() => setEditBtn("bamboo")}
-                className="bi-pen-fill text-blue-500"
-              ></button>
-            )}
+          <p className="font-poppins">€{cards?.bamboo.price}</p>
+          <div className="lg:col-span-1 col-span-2 flex gap-x-2">
+            <input
+              type="number"
+              className="ps-3 text-black font-poppins font-bold focus:outline-none rounded w-28 lg:h-8 h-9"
+              onChange={(e) => setBamboo(e.currentTarget.value)}
+              value={bamboo}
+            />
+            <button
+              onClick={() => handleChange("bamboo")}
+              className="bi-check bg-green-500 lg:h-8 h-9 rounded px-2 text-xl"
+            ></button>
           </div>
         </div>
 
         {/* Recycled */}
-        <div className="col-span-4 grid grid-cols-4 secondary-bg mb-2 py-3 px-3 rounded">
-          <p className="mb-1 font-poppins">Recycled Paper</p>
-          <p className="mb-1 font-poppins font-bold">
-            €{cards?.recycled_paper.price}
-          </p>
-          <div className="col-span-2 flex gap-x-3">
-            {editBtn === "recycled_paper" ? (
-              <>
-                <input
-                  type="number"
-                  className="ps-3 text-black font-poppins font-bold focus:outline-none rounded lg:w-28 w-20 lg:h-8 h-9"
-                  onChange={(e) => setPaper(e.currentTarget.value)}
-                  value={paper}
-                />
-                <button
-                  onClick={() => handleChange()}
-                  className="bi-check bg-green-500 h-8 rounded px-2 text-xl"
-                ></button>
-
-                <button
-                  onClick={() => setEditBtn("")}
-                  className="bi-x-lg text-red-400"
-                ></button>
-              </>
-            ) : (
-              <button
-                onClick={() => setEditBtn("recycled_paper")}
-                className="bi-pen-fill text-blue-500"
-              ></button>
-            )}
+        <div className="col-span-4 lg:col-span-3 grid lg:grid-cols-3 grid-cols-4 secondary-bg mb-2 py-3 px-2 rounded-lg">
+          <p className="mb-1 font-poppins">PVC</p>
+          <p className="mb-1 font-poppins">€{cards?.recycled_paper.price}</p>
+          <div className="lg:col-span-1 col-span-2 flex gap-x-2">
+            <input
+              type="number"
+              className="ps-3 text-black font-poppins font-bold focus:outline-none rounded w-28 lg:h-8 h-9"
+              onChange={(e) => setPaper(e.currentTarget.value)}
+              value={paper}
+            />
+            <button
+              onClick={() => handleChange("recycled_paper")}
+              className="bi-check bg-green-500 lg:h-8 h-9 rounded px-2 text-xl"
+            ></button>
           </div>
         </div>
 
         {/* Wallet */}
-        <div className="col-span-4 grid grid-cols-4 secondary-bg mb-2 py-3 px-3 rounded">
+        <div className="col-span-4 lg:col-span-3 grid lg:grid-cols-3 grid-cols-4 secondary-bg mb-2 py-3 px-3 rounded-lg">
           <p className="mb-1 font-poppins">Wallets</p>
           <p className="mb-1 font-poppins font-bold">€{cards?.wallet.price}</p>
-          <div className="col-span-2 flex gap-x-3">
-            {editBtn === "wallet" ? (
-              <>
-                <input
-                  type="number"
-                  className="ps-3 text-black font-poppins font-bold focus:outline-none rounded lg:w-28 w-20 lg:h-8 h-9"
-                  onChange={(e) => setWallet(e.currentTarget.value)}
-                  value={wallet}
-                />
-                <button
-                  onClick={() => handleChange()}
-                  className="bi-check bg-green-500 h-8 rounded px-2 text-xl"
-                ></button>
-
-                <button
-                  onClick={() => setEditBtn("")}
-                  className="bi-x-lg text-red-400"
-                ></button>
-              </>
-            ) : (
-              <button
-                onClick={() => setEditBtn("wallet")}
-                className="bi-pen-fill text-blue-500"
-              ></button>
-            )}
+          <div className="lg:col-span-1 col-span-2 flex gap-x-3">
+            <input
+              type="number"
+              className="ps-3 text-black font-poppins font-bold focus:outline-none rounded w-28 lg:h-8 h-9"
+              onChange={(e) => setWallet(e.currentTarget.value)}
+              value={wallet}
+            />
+            <button
+              onClick={() => handleChange("wallet")}
+              className="bi-check bg-green-500 h-8 rounded px-2 text-xl"
+            ></button>
           </div>
         </div>
       </div>

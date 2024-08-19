@@ -57,14 +57,14 @@ const Subscription = () => {
   return (
     <div className="bg2 rounded-lg py-4 lg:px-4 px-2">
       <div className="grid lg:grid-cols-3 grid-cols-4 text-white">
-        <p className="text-gray-400 text-sm mb-3 w-full font-poppins">Plan</p>
-        <p className="text-gray-400 text-sm mb-3 w-full font-poppins">Price</p>
-        <p className="text-gray-400 text-sm mb-3 w-full font-poppins">Edit</p>
+        <p className="text-gray-400 text-sm w-full font-poppins mb-5">Plan</p>
+        <p className="text-gray-400 text-sm w-full font-poppins mb-5">Price</p>
+        <p className="text-gray-400 text-sm w-full font-poppins mb-5">Edit</p>
 
         {/* Pro */}
-        <div className="lg:col-span-3 col-span-4 grid lg:grid-cols-3 grid-cols-4 secondary-bg mb-2 py-3 px-3 rounded">
+        <div className="lg:col-span-3 col-span-4 grid lg:grid-cols-3 grid-cols-4 secondary-bg mb-2 py-3 px-3 rounded-lg">
           <p className="font-poppins">Pro</p>
-          <p className="font-poppins font-bold">€{subscription?.pro.price}</p>
+          <p className="font-poppins">€{subscription?.pro.price}</p>
 
           <div className="flex gap-x-3">
             <>
@@ -83,11 +83,9 @@ const Subscription = () => {
         </div>
 
         {/* Pro + */}
-        <div className="lg:col-span-3 col-span-4 grid lg:grid-cols-3 grid-cols-4 secondary-bg mb-2 py-3 px-3 rounded">
+        <div className="lg:col-span-3 col-span-4 grid lg:grid-cols-3 grid-cols-4 secondary-bg mb-2 py-3 px-3 rounded-lg">
           <p className="font-poppins">Pro +</p>
-          <p className="font-poppins font-bold">
-            €{subscription?.proPlus.price}
-          </p>
+          <p className="font-poppins">€{subscription?.proPlus.price}</p>
           <div className="flex gap-x-3">
             <>
               <input
