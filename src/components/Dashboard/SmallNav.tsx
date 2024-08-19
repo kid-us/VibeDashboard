@@ -1,20 +1,44 @@
 import { useState } from "react";
 import { tabs } from "./Sidebar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Setting from "../Modal/Setting";
-import useAmbassadors from "@/hook/useAmbassadors";
 import useAuth from "@/store/useAuth";
+import axios from "axios";
+import { baseUrl } from "@/services/request";
+import useMessage from "@/hook/useMessages";
+import Message from "./Message";
 
 interface Props {
   active: string;
 }
 
 const SmallNavbar = ({ active }: Props) => {
+  const navigate = useNavigate();
+  const { messages } = useMessage();
   const { type } = useAuth();
   const [menu, setMenu] = useState(false);
   const [setting, setSetting] = useState<boolean>(false);
-  const { pendingAmbassadors } = useAmbassadors();
   const [message, setMessage] = useState<boolean>(false);
+
+  const handleLogout = () => {
+    axios
+      .post(
+        `${baseUrl}/api/v1/dashboard/logout`,
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      )
+      .then(() => {
+        navigate("/login");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <>
@@ -34,14 +58,19 @@ const SmallNavbar = ({ active }: Props) => {
               className="cursor-pointer bi-bell-fill text-xl"
             ></p>
             <p className="absolute -top-2 left-3 bg-red-500 rounded-full w-5 h-5 text-center">
-              <span className="absolute -top-[3px] left-[5px]">0</span>
+              <span className="absolute top-[2px] left-[7px] font-poppins text-xs">
+                {messages.length}
+              </span>
             </p>
           </div>
           <p
             onClick={() => setSetting(true)}
             className="cursor-pointer bi-person-circle text-xl"
           ></p>
-          <p className="bi-box-arrow-right text-xl"></p>
+          <p
+            onClick={() => handleLogout()}
+            className="bi-box-arrow-right text-xl"
+          ></p>
         </div>
       </div>
 
@@ -80,35 +109,7 @@ const SmallNavbar = ({ active }: Props) => {
       )}
 
       {/* Message */}
-      {message && (
-        <>
-          <div className="fixed lg:w-[20%] w-[80%] z-50 top-14 right-0 bg-white rounded p-2">
-            {pendingAmbassadors.length > 0 ? (
-              <>
-                {pendingAmbassadors.map((pending) => (
-                  <div className="flex justify-between bg-teal-500 rounded px-2 py-1 mb-2">
-                    <div className="flex gap-x-4">
-                      <p className="font-bold">{pending.first_name}</p>
-                      <p className="font-bold">{pending.last_name}</p>
-                    </div>
-                    <Link
-                      to="/ambassadors"
-                      className="bi-box-arrow-in-right text-xl text-white"
-                    ></Link>
-                  </div>
-                ))}
-                <p className="text-xs mt-3 ms-1 font-bold">
-                  Requested to become an Ambassador
-                </p>
-              </>
-            ) : (
-              <p className="text-sm mt-3 font-bold text-red-600">
-                There is no message to view!
-              </p>
-            )}
-          </div>
-        </>
-      )}
+      {message && <Message />}
       {/* Setting */}
       {setting && <Setting onClose={() => setSetting(false)} />}
     </>
