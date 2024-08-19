@@ -124,31 +124,31 @@ const Orders = () => {
     return `${day}-${month}-${year}`;
   }
 
-  // const handleDownload = async (imageUrl: string) => {
-  //   try {
-  //     // Replace with your image URL
+  const handleDownload = async (imageUrl: string) => {
+    try {
+      // Replace with your image URL
 
-  //     // Fetch the image
-  //     const response = await axios.get(imageUrl, { responseType: "blob" });
+      // Fetch the image
+      const response = await axios.get(imageUrl, { responseType: "blob" });
 
-  //     // Create a blob from the image data
-  //     const blob = new Blob([response.data], { type: "image/jpeg" });
+      // Create a blob from the image data
+      const blob = new Blob([response.data], { type: "image/jpeg" });
 
-  //     // Create a link element
-  //     const link = document.createElement("a");
-  //     link.href = URL.createObjectURL(blob);
-  //     link.download = "downloaded-image.jpg"; // Name of the downloaded file
+      // Create a link element
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "downloaded-image.jpg"; // Name of the downloaded file
 
-  //     // Append the link to the document and trigger the download
-  //     document.body.appendChild(link);
-  //     link.click();
+      // Append the link to the document and trigger the download
+      document.body.appendChild(link);
+      link.click();
 
-  //     // Clean up and remove the link
-  //     document.body.removeChild(link);
-  //   } catch (error) {
-  //     console.error("Failed to download image", error);
-  //   }
-  // };
+      // Clean up and remove the link
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error("Failed to download image", error);
+    }
+  };
 
   return (
     <>
@@ -184,26 +184,35 @@ const Orders = () => {
                     />
                   </div>
                   {/* Delivery Data */}
-                  <div className="col-span-3 grid grid-cols-2 lg:gap-x-10 lg:px-0 px-5 lg:mt-0 mt-5">
+                  <div className="col-span-3 lg:grid grid-cols-2 lg:gap-x-10 lg:px-0 px-5 lg:mt-0 mt-5">
                     {/* Card */}
                     <div>
-                      <p className="lg:font-bold lg:text-xl text-xs text-white mb-5">
+                      <p className="lg:font-bold lg:text-xl text-white mb-5 font-poppins">
                         Card Information
                       </p>
-                      <div className="lg:grid grid-cols-2 lg:gap-x-0 gap-x-2">
+                      <div className="grid grid-cols-2 lg:gap-x-0 gap-x-2">
                         <div className="col-span-2 mb-5">
                           <p className="text-white font-poppins">
-                            Order Date : {getDate(order.created_at)}
+                            <span className="font-poppins text-gray-400">
+                              Order Date :
+                            </span>{" "}
+                            {getDate(order.created_at)}
                           </p>
-                          <p className="text-white">
+                          <p className="font-poppins text-gray-400">
                             Quantity :{" "}
-                            <span className="text-2xl text-teal-500">
+                            <span className="text-xl text-white font-poppins">
                               {order.quantity}
+                            </span>
+                          </p>
+                          <p className="font-poppins text-gray-400">
+                            Vibecard Logo :{" "}
+                            <span className="text-xl text-white font-poppins">
+                              {order.vibecardLogo ? "True" : "False"}
                             </span>
                           </p>
                         </div>
                         <div>
-                          <p className="text-gray-300 text-xs mb-2">
+                          <p className="text-gray-400 text-xs mb-2 font-poppins">
                             Front Image
                           </p>
                           <img
@@ -212,17 +221,18 @@ const Orders = () => {
                             className="w-28 rounded"
                           />
                         </div>
-                        {/* <div>
+                        <div>
                           <button
-                            className="bi-download lg:text-3xl text-2xl lg:pt-10 pt-8 text-white"
+                            className="bi-download lg:text-3xl text-2xl lg:pt-10 pt-8 text-white border-none"
                             onClick={() => handleDownload(order.front_image)}
                           ></button>
-                        </div> */}
+                        </div>
+
                         {/* Back Image */}
                         {order.back_image && (
                           <>
                             <div className="mt-5">
-                              <p className="text-gray-300 text-xs mb-2">
+                              <p className="text-gray-400 text-xs mb-2 font-poppins">
                                 Back Image
                               </p>
                               <img
@@ -231,93 +241,102 @@ const Orders = () => {
                                 className="w-28 h-20 rounded object-cover"
                               />
                             </div>
-                            {/* <div>
+                            <div>
                               <button
-                                className="bi-download lg:text-3xl text-2xl lg:pt-10 pt-8 text-white mt-5"
+                                className="bi-download lg:text-3xl text-2xl lg:pt-10 pt-8 text-white mt-5 border-none"
                                 onClick={() =>
                                   handleDownload(order.front_image)
                                 }
                               ></button>
-                            </div> */}
+                            </div>
                           </>
                         )}
                       </div>
                     </div>
-                    {/* Delivery */}
-                    <div className="text-white">
-                      <p className="lg:font-bold lg:text-xl text-xs text-white mb-5">
-                        Delivery Information
-                      </p>
-                      <div className="lg:grid grid-cols-5">
-                        <p className="mb-2 col-span-2 font-poppins text-gray-400 font-bold">
-                          First Name
+                    <div>
+                      {/* Delivery */}
+                      <div className="text-white">
+                        <p className="lg:font-bold lg:text-xl mt-7 text-white mb-5 font-poppins">
+                          Delivery Information
                         </p>
-                        <p className="col-span-3 uppercase text-sm">
-                          {order.order_metadata.fname}
-                        </p>
+                        <div className="grid grid-cols-5">
+                          <p className="mb-2 col-span-2 font-poppins text-gray-400">
+                            First Name
+                          </p>
+                          <p className="col-span-3 font-bold font-poppins text-sm">
+                            {order.order_metadata.fname}
+                          </p>
 
-                        <p className="mb-2 col-span-2 font-poppins text-gray-400 font-bold">
-                          Last Name
-                        </p>
-                        <p className="col-span-3 uppercase font-poppins text-sm">
-                          {order.order_metadata.lname}
-                        </p>
+                          <p className="mb-2 col-span-2 font-poppins text-gray-400">
+                            Last Name
+                          </p>
+                          <p className="col-span-3 font-bold font-poppins text-sm">
+                            {order.order_metadata.lname}
+                          </p>
 
-                        <p className="mb-2 col-span-2 font-poppins text-gray-400 font-bold">
-                          Email
-                        </p>
-                        <p className="col-span-3 uppercase font-poppins text-sm">
-                          {order.order_metadata.email}
-                        </p>
+                          <p className="mb-2 col-span-2 font-poppins text-gray-400">
+                            Email
+                          </p>
+                          <p className="col-span-3 font-bold font-poppins text-sm">
+                            {order.order_metadata.email}
+                          </p>
 
-                        <p className="mb-2 col-span-2 font-poppins text-gray-400 font-bold">
-                          Location
-                        </p>
-                        <p className="col-span-3 uppercase font-poppins text-sm">
-                          {order.order_metadata.location}
-                        </p>
+                          <p className="mb-2 col-span-2 font-poppins text-gray-400">
+                            Location
+                          </p>
+                          <p className="col-span-3 font-bold font-poppins text-sm">
+                            {order.order_metadata.location}
+                          </p>
 
-                        <p className="mb-2 col-span-2 font-poppins text-gray-400 font-bold">
-                          Phone
-                        </p>
-                        <p className="col-span-3 uppercase font-poppins text-sm">
-                          {order.order_metadata.phone}
-                        </p>
+                          <p className="mb-2 col-span-2 font-poppins text-gray-400">
+                            Phone
+                          </p>
+                          <p className="col-span-3 font-bold font-poppins text-sm">
+                            {order.order_metadata.phone}
+                          </p>
 
-                        <p className="mb-2 col-span-2 font-poppins text-gray-400 font-bold">
-                          Street
-                        </p>
-                        <p className="col-span-3 uppercase font-poppins text-sm">
-                          {order.order_metadata.street}
-                        </p>
+                          <p className="mb-2 col-span-2 font-poppins text-gray-400">
+                            Street
+                          </p>
+                          <p className="col-span-3 font-bold font-poppins text-sm">
+                            {order.order_metadata.street}
+                          </p>
 
-                        <p className="mb-2 col-span-2 font-poppins text-gray-400 font-bold">
-                          Street No
-                        </p>
-                        <p className="col-span-3 uppercase font-poppins text-sm">
-                          {order.order_metadata.street_no}
-                        </p>
+                          <p className="mb-2 col-span-2 font-poppins text-gray-400">
+                            Street No
+                          </p>
+                          <p className="col-span-3 font-bold font-poppins text-sm">
+                            {order.order_metadata.street_no}
+                          </p>
 
-                        <p className="mb-2 col-span-2 font-poppins text-gray-400 font-bold">
-                          Address
-                        </p>
-                        <p className="col-span-3 uppercase font-poppins text-sm">
-                          {order.order_metadata.address}
-                        </p>
+                          <p className="mb-2 col-span-2 font-poppins text-gray-400">
+                            Address
+                          </p>
+                          <p className="col-span-3 font-bold font-poppins text-sm">
+                            {order.order_metadata.address}
+                          </p>
 
-                        <p className="mb-2 col-span-2 font-poppins text-gray-400">
-                          PLZ
-                        </p>
-                        <p className="col-span-3 uppercase font-poppins text-sm">
-                          {order.order_metadata.plz}
-                        </p>
+                          <p className="mb-2 col-span-2 font-poppins text-gray-400">
+                            PLZ
+                          </p>
+                          <p className="col-span-3 font-bold font-poppins text-sm">
+                            {order.order_metadata.plz}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Buttons */}
+                      <div className="mt-4">
+                        <button className="bg-green-500 font-poppins w-[90%] rounded h-12 text-white shadow shadow-zinc-950">
+                          Delivered
+                        </button>
                       </div>
                     </div>
                   </div>
                 </div>
               ))
             ) : (
-              <p className="w-full bg-white text-center py-3 text-sm">
+              <p className="w-full bg-white text-center py-3 text-sm font-poppins">
                 List of NFC card orders will be here!
               </p>
             )}
