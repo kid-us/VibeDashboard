@@ -49,7 +49,7 @@ const Message = () => {
             ))}
           </>
         ) : (
-          <p className="text-sm mt-3 text-red-600">
+          <p className="my-1 text-black font-poppins">
             There is no message to view!
           </p>
         )}

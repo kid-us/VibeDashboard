@@ -3,15 +3,16 @@ import { tabs } from "./Sidebar";
 import { Link } from "react-router-dom";
 import Setting from "../Modal/Setting";
 import useAmbassadors from "@/hook/useAmbassadors";
+import useAuth from "@/store/useAuth";
 
 interface Props {
   active: string;
 }
 
 const SmallNavbar = ({ active }: Props) => {
+  const { type } = useAuth();
   const [menu, setMenu] = useState(false);
   const [setting, setSetting] = useState<boolean>(false);
-
   const { pendingAmbassadors } = useAmbassadors();
   const [message, setMessage] = useState<boolean>(false);
 
@@ -53,7 +54,7 @@ const SmallNavbar = ({ active }: Props) => {
                 to={tab.path}
                 className={`${
                   active === tab.title
-                    ? "bg-teal-300 rounded text-black"
+                    ? "bg-teal-500 rounded text-black"
                     : "text-white"
                 } block mb-5 text-xl p-3 font-poppins`}
               >
@@ -61,6 +62,19 @@ const SmallNavbar = ({ active }: Props) => {
                 {tab.title}
               </Link>
             ))}
+            {type === "super_admin" && (
+              <Link
+                to={"/forms"}
+                className={`${
+                  active === "Forms"
+                    ? "bg-teal-500 rounded text-black"
+                    : "text-white"
+                } block mb-5 text-xl p-3 font-poppins`}
+              >
+                <span className={`bi-input-cursor-text me-5`}></span>
+                Forms
+              </Link>
+            )}
           </div>
         </div>
       )}

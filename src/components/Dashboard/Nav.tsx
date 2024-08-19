@@ -51,7 +51,7 @@ const Nav = () => {
               className="cursor-pointer bi-bell-fill text-2xl"
             ></button>
             <p className="absolute -top-2 left-3 bg-red-500 rounded-full w-5 h-5 text-center">
-              <span className="absolute -top-[3px] left-[5px]">
+              <span className="absolute -top-[2px] left-[7px] font-poppins">
                 {messages.length}
               </span>
             </p>

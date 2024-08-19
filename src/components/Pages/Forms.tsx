@@ -135,14 +135,19 @@ const Forms = () => {
           {/* Nav */}
           <Nav />
 
+          {/* Admins */}
           <div className="mt-4 text-white lg:px-2">
-            <p className="text-gray-400">Admins</p>
-            <div className="grid lg:grid-cols-4 gap-x-4 my-4">
+            <p className="text-white font-poppins">Admins</p>
+            <div className="grid lg:grid-cols-3 gap-x-4 mt-4">
               {admins.map((admin, index) => (
-                <div key={index} className="bg2 rounded p-4 lg:mb-0 mb-4">
-                  <p className="font-bold uppercase">Admin {index + 1}</p>
-                  <p className="text-sm mt-4">Email : {admin.email}</p>
-                  <p className="text-sm mb-4">
+                <div key={index} className="bg2 rounded p-5 py-6 lg:mb-0 mb-4">
+                  <p className="font-bold uppercase font-poppins">
+                    Admin {index + 1}
+                  </p>
+                  <p className="text-sm mt-4 font-poppins">
+                    Email : {admin.email}
+                  </p>
+                  <p className="text-sm mb-4 font-poppins">
                     Status :{" "}
                     <span
                       className={`first-letter:uppercase ${
@@ -161,7 +166,7 @@ const Forms = () => {
                         setOnDelete(true);
                         setOnDeleteEmail(admin.email);
                       }}
-                      className="cursor-pointer shadow shadow-zinc-900 text-center bg-red-500 text-xs rounded w-full py-2"
+                      className="cursor-pointer shadow shadow-zinc-900 text-center bg-red-500 text-xs rounded w-full py-2 font-poppins"
                     >
                       Delete
                     </p>
@@ -170,7 +175,7 @@ const Forms = () => {
                         onClick={() =>
                           handelAdmin(admin.email, "deactivate-admin")
                         }
-                        className="cursor-pointer shadow shadow-zinc-900 text-center bg-blue-500 text-xs rounded w-full py-2"
+                        className="cursor-pointer shadow shadow-zinc-900 text-center bg-blue-500 text-xs rounded w-full py-2 font-poppins"
                       >
                         Deactivate
                       </p>
@@ -191,7 +196,9 @@ const Forms = () => {
           </div>
 
           <div className="lg:mx-2">
-            <p className="text-gray-400 mb-7">Create a new Admin Account</p>
+            <p className="text-white mt-5 mb-7 font-poppins">
+              Create a new Admin Account
+            </p>
             <div className="p-8 bg2 rounded lg:w-[50%] w-full lg:px-20">
               <>
                 <form onSubmit={handleSubmit(onSubmit)} className="relative">
@@ -199,7 +206,7 @@ const Forms = () => {
                   {updateError && (
                     <div className="relative">
                       <p className="absolute -top-9 text-white bg-red-500 w-full rounded p-1 text-sm">
-                        <span className="bi-exclamation-triangle-fill me-4"></span>
+                        <span className="bi-exclamation-triangle-fill me-4 font-poppins"></span>
                         Something went wrong try again
                       </p>
                     </div>
@@ -207,7 +214,7 @@ const Forms = () => {
                   {/* Email */}
                   <div className="my-5">
                     <label
-                      className="text-sm text-gray-500 block"
+                      className="text-sm text-gray-400 font-poppins block"
                       htmlFor="email"
                     >
                       Email
@@ -228,7 +235,7 @@ const Forms = () => {
                   {/* Password */}
                   <div className="mb-10 relative">
                     <label
-                      className="text-sm text-gray-500 block"
+                      className="text-sm text-gray-400 font-poppins block"
                       htmlFor="password"
                     >
                       Password
