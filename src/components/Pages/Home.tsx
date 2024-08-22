@@ -29,9 +29,11 @@ interface General {
 const Home = () => {
   const [title] = useState("Vibecard - Dashboard");
   useDocumentTitle(title);
-
+  const { activeAmbassadors, pendingAmbassadors } = useAmbassadors();
   const [general, setGeneral] = useState<General>();
   const [loading, setLoading] = useState<boolean>(true);
+  const [cards, setCards] = useState<string[]>([]);
+  const [material, setMaterial] = useState<string>("");
 
   useEffect(() => {
     axios
@@ -49,7 +51,60 @@ const Home = () => {
       });
   }, []);
 
-  const { activeAmbassadors, pendingAmbassadors } = useAmbassadors();
+  useEffect(() => {
+    axios
+      .get(`${baseUrl}/api/v1/products/available-materials`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        setCards(response.data.materials);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  // Remove Material
+  const handleRemoveMaterial = (material: string) => {
+    axios
+      .delete(
+        `${baseUrl}/api/v1/products/remove-material?material=${material}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then(() => {
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  // Add Material
+  const handleAddMaterial = () => {
+    axios
+      .post(
+        `${baseUrl}/api/v1/products/add-material?material=${material}`,
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then(() => {
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <>
       {loading && <Loading />}
@@ -166,6 +221,53 @@ const Home = () => {
             <div>
               <p className="text-white font-poppins mb-5">Products</p>
               <Materials />
+              <div className="grid grid-cols-4 gap-x-5 my-5">
+                <div className="col-span-2">
+                  <p className="text-white font-poppins mb-3">Available Card</p>
+                  <div className="secondary-bg text-white p-4 rounded-xl">
+                    {cards.length > 0 ? (
+                      cards.map((c) => (
+                        <div className="flex justify-between mb-2">
+                          <p className="font-poppins first-letter:uppercase">
+                            {c}
+                          </p>
+                          <button
+                            onClick={() => handleRemoveMaterial(c)}
+                            className="bg-red-500 bi-trash tex-sm rounded w-8 h-8"
+                          ></button>
+                        </div>
+                      ))
+                    ) : (
+                      <p className="text-sm font-poppins py-4">
+                        There no available card material
+                      </p>
+                    )}
+                  </div>
+                </div>
+                <div className="col-span-2">
+                  <p className="text-white font-poppins mb-3">Add Material</p>
+                  <div className="secondary-bg text-white p-4 rounded-xl">
+                    <select
+                      onChange={(e) => setMaterial(e.currentTarget.value)}
+                      name="material"
+                      className="w-full focus:outline-none rounded h-10 text-black font-poppins ps-2 text-sm"
+                    >
+                      <option selected hidden>
+                        Choose material
+                      </option>
+                      <option value="bamboo">Bamboo</option>
+                      <option value="metal">Metal</option>
+                      <option value="recycled_paper">PVC</option>
+                    </select>
+                    <button
+                      onClick={() => handleAddMaterial()}
+                      className="bg-green-500 w-full rounded font-poppins mt-2 h-9"
+                    >
+                      Add
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

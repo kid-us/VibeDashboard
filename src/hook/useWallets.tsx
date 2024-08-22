@@ -10,6 +10,7 @@ interface Wallets {
   size: string;
   wallet_id: string;
   name: string;
+  status: string;
 }
 
 interface All {
