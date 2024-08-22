@@ -6,6 +6,7 @@ import Sidebar from "../Dashboard/Sidebar";
 import Nav from "../Dashboard/Nav";
 import useDocumentTitle from "@/hook/useDocumentTitle";
 import Loading from "../Loading/Loading";
+import Email from "../Modal/Email";
 
 interface Delivery {
   address: string;
@@ -91,6 +92,7 @@ const Orders = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [pagination, setPagination] = useState<Pagination>();
   const [page, setPage] = useState<number>(1);
+  const [orderId, setOrderId] = useState<string>("");
 
   useEffect(() => {
     axios
@@ -174,6 +176,10 @@ const Orders = () => {
   return (
     <>
       {loading && <Loading />}
+
+      {orderId !== "" && (
+        <Email id={orderId} onApprove={() => setOrderId("")} type="product" />
+      )}
       <div className="relative lg:grid md:grid grid-cols-11">
         {/* Small device Navbar */}
         <SmallNavbar active="Cards" />
@@ -346,8 +352,11 @@ const Orders = () => {
 
                         {/* Buttons */}
                         <div className="mt-4">
-                          <button className="bg-green-500 font-poppins lg:w-[90%] w-full rounded h-12 text-white shadow shadow-zinc-950">
-                            Delivered
+                          <button
+                            onClick={() => setOrderId(order.order_id)}
+                            className="bg-blue-500 font-poppins lg:w-[90%] w-full rounded h-12 text-white shadow shadow-zinc-950"
+                          >
+                            Send Email
                           </button>
                         </div>
                       </div>

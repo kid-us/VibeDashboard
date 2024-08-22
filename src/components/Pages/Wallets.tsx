@@ -7,6 +7,7 @@ import Nav from "../Dashboard/Nav";
 import useDocumentTitle from "@/hook/useDocumentTitle";
 import Loading from "../Loading/Loading";
 import useWallets from "@/hook/useWallets";
+import Email from "../Modal/Email";
 
 interface Delivery {
   address: string;
@@ -45,6 +46,7 @@ const Wallets = () => {
 
   const [wallets, setWallets] = useState<GetWallets[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [orderId, setOrderId] = useState<string>("");
 
   useEffect(() => {
     axios
@@ -54,6 +56,8 @@ const Wallets = () => {
         },
       })
       .then((response) => {
+        console.log(response.data);
+
         setWallets(response.data.wallet_orders);
         setLoading(false);
       })
@@ -81,6 +85,11 @@ const Wallets = () => {
   return (
     <>
       {loading && <Loading />}
+
+      {orderId !== "" && (
+        <Email id={orderId} onApprove={() => setOrderId("")} type="wallet" />
+      )}
+
       <div className="relative lg:grid md:grid grid-cols-11">
         {/* Small device Navbar */}
         <SmallNavbar active="Wallets" />
@@ -131,8 +140,11 @@ const Wallets = () => {
                       ))}
                     </div>
                     {/* Button */}
-                    <button className="md:block lg:block hidden bg-green-500 w-full rounded font-poppins h-11 text-white shadow shadow-zinc-900">
-                      Delivered
+                    <button
+                      onClick={() => setOrderId(order.order_id)}
+                      className="md:block lg:block hidden bg-blue-500 w-full rounded font-poppins h-11 text-white shadow shadow-zinc-900"
+                    >
+                      Send Email
                     </button>
                   </div>
 
@@ -206,8 +218,11 @@ const Wallets = () => {
                           {order.order_metadata.plz}
                         </p>
                       </div>
-                      <button className="md:hidden lg:hidden bg-green-500 w-full rounded font-poppins h-11 text-white shadow shadow-zinc-900 mb-3 mt-2">
-                        Delivered
+                      <button
+                        onClick={() => setOrderId(order.order_id)}
+                        className="md:hidden lg:hidden bg-blue-500 w-full rounded font-poppins h-11 text-white shadow shadow-zinc-900 mb-3 mt-2"
+                      >
+                        Send Email
                       </button>
                     </div>
                   </div>
