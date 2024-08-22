@@ -93,17 +93,25 @@ const Wallets = () => {
       <p className="font-poppins my-4 text-gray-400 text-sm">
         Change Wallet's Status
       </p>
-      <div className="col-span-4 lg:col-span-3 grid lg:grid-cols-3 grid-cols-4 secondary-bg mb-2 py-3 px-3 rounded-lg">
+      <div className="grid lg:grid-cols-3 grid-cols-3 secondary-bg mb-2 py-3 px-3 rounded-lg">
         {allWallets.map((wal) => (
           <>
             <div className="mb-3">
               <img src={wal.image} alt="wallet" className="w-20 rounded" />
             </div>
-            <p className="text-white mt-8 font-poppins">{wal.status}</p>
+            <p
+              className={`${
+                wal.status === "Available" ? "text-green-500" : "text-red-500"
+              } mt-8 font-poppins`}
+            >
+              {wal.status}
+            </p>
             <div className="mt-5">
               <button
                 onClick={() => handleWalletStatus(wal.wallet_id)}
-                className="text-white font-poppins bg-green-500 rounded text-sm p-3 w-full"
+                className={`text-white font-poppins ${
+                  wal.status !== "Available" ? "bg-green-500" : "bg-red-500"
+                } rounded text-sm p-3 w-full`}
               >
                 Change Status
               </button>

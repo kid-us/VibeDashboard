@@ -222,7 +222,7 @@ const Home = () => {
               <p className="text-white font-poppins mb-5">Products</p>
               <Materials />
               <div className="grid grid-cols-4 gap-x-5 my-5">
-                <div className="col-span-2">
+                <div className="lg:col-span-2 col-span-4">
                   <p className="text-white font-poppins mb-3">Available Card</p>
                   <div className="secondary-bg text-white p-4 rounded-xl">
                     {cards.length > 0 ? (
@@ -244,8 +244,10 @@ const Home = () => {
                     )}
                   </div>
                 </div>
-                <div className="col-span-2">
-                  <p className="text-white font-poppins mb-3">Add Material</p>
+                <div className="lg:col-span-2 col-span-4">
+                  <p className="text-white font-poppins mb-3 lg:mt-0 mt-4">
+                    Add Material
+                  </p>
                   <div className="secondary-bg text-white p-4 rounded-xl">
                     <select
                       onChange={(e) => setMaterial(e.currentTarget.value)}
