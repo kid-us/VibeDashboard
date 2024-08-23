@@ -64,7 +64,7 @@ interface TotalOrders {
     front_style: string; // String to parse
     back_style: string; // String to parse
     order_id: string;
-    order_metadata: string; // String to parse
+    order_metadata: Delivery; // String to parse
     quantity: number;
     vibecardLogo: boolean;
     orientation: string;
@@ -108,7 +108,7 @@ const Orders = () => {
               ...order,
               front_style: JSON.parse(order.front_style) as Card,
               back_style: JSON.parse(order.back_style) as Card,
-              order_metadata: JSON.parse(order.order_metadata) as Delivery,
+              order_metadata: order.order_metadata,
             };
           } catch (e) {
             console.error("Error parsing order data", e);
@@ -362,50 +362,6 @@ const Orders = () => {
                       </div>
                     </div>
                   </div>
-                  {/* Pagination */}
-                  {pagination && (
-                    <div className="flex justify-end mt-2">
-                      <div className="flex gap-x-2">
-                        {/* prev */}
-                        <button
-                          onClick={() => setPage(page - 1)}
-                          disabled={
-                            pagination.total <= pagination.limit ? true : false
-                          }
-                          className={`${
-                            pagination.total < 10
-                              ? "bg-gray-400 cursor-not-allowed"
-                              : "btn-bg shadow p-1"
-                          } w-20 font-poppins rounded text-sm h-7`}
-                        >
-                          Prev
-                        </button>
-                        {/* Current */}
-                        <p className="bg-white w-10 font-poppins rounded text-sm h-7 text-center pt-[6px]">
-                          {pagination.page}
-                        </p>
-                        {/*next  */}
-                        <button
-                          onClick={() =>
-                            pagination.page < pagination.total_pages &&
-                            setPage(page + 1)
-                          }
-                          disabled={
-                            pagination.page >= pagination.total_pages
-                              ? true
-                              : false
-                          }
-                          className={`${
-                            pagination.page >= pagination.total_pages
-                              ? "bg-gray-400 cursor-not-allowed"
-                              : "btn-bg shadow p-1"
-                          } w-20 font-poppins rounded text-sm h-7`}
-                        >
-                          Next
-                        </button>
-                      </div>
-                    </div>
-                  )}
                 </div>
               ))
             ) : (
@@ -414,6 +370,46 @@ const Orders = () => {
               </p>
             )}
           </div>
+          {/* Pagination */}
+          {pagination && (
+            <div className="flex justify-end mt-2">
+              <div className="flex gap-x-2">
+                {/* prev */}
+                <button
+                  onClick={() => setPage(page - 1)}
+                  disabled={pagination.total <= pagination.limit ? true : false}
+                  className={`${
+                    pagination.total < 10
+                      ? "bg-gray-400 cursor-not-allowed"
+                      : "btn-bg shadow p-1"
+                  } w-20 font-poppins rounded text-sm h-7`}
+                >
+                  Prev
+                </button>
+                {/* Current */}
+                <p className="bg-white w-10 font-poppins rounded text-sm h-7 text-center pt-[6px]">
+                  {pagination.page}
+                </p>
+                {/*next  */}
+                <button
+                  onClick={() =>
+                    pagination.page < pagination.total_pages &&
+                    setPage(page + 1)
+                  }
+                  disabled={
+                    pagination.page >= pagination.total_pages ? true : false
+                  }
+                  className={`${
+                    pagination.page >= pagination.total_pages
+                      ? "bg-gray-400 cursor-not-allowed"
+                      : "btn-bg shadow p-1"
+                  } w-20 font-poppins rounded text-sm h-7`}
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </>

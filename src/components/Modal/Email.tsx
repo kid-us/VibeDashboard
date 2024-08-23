@@ -35,7 +35,6 @@ const Email = ({ id, onApprove, type }: Props) => {
       url = `/api/v1/products/complete-product-order/${id}`;
     }
 
-    return;
     axios
       .post(`${baseUrl}/api/v1/products/send-order-update`, data, {
         headers: {
