@@ -1,1 +1,1 @@
-export const baseUrl = "https://vibeapi.jamescog.com";
+export const baseUrl = "https://vibecard.de";
